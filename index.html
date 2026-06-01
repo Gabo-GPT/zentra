@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ZENTRA — Videovigilancia CCTV, cámaras IP y análogas, reparación de impresoras en Bogotá.">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>ZENTRA | Tecnología &amp; Seguridad</title>
+  <link rel="icon" href="img/logo-icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          boxShadow: {
+            'glow-cyan': '0 0 40px -8px rgba(34, 211, 238, 0.45)',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/zentra.css">
+</head>
+
+<body class="bg-neutral-950 text-zinc-100 antialiased">
+
+  <!-- NAVBAR (glass sobre el hero) -->
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-neutral-950/50 backdrop-blur-xl">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <nav class="flex h-16 items-center justify-between lg:grid lg:grid-cols-[auto_1fr_auto] lg:gap-12" aria-label="Principal">
+
+        <a href="#inicio" class="zentra-logo group flex items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-500 focus-visible:outline-offset-2" aria-label="ZENTRA — Tecnología y Seguridad">
+          <svg class="zentra-logo__icon h-10 w-10 shrink-0 sm:h-11 sm:w-11" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="zentra-grad-nav" x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#67e8f9"/><stop offset="0.45" stop-color="#22d3ee"/><stop offset="1" stop-color="#0891b2"/>
+              </linearGradient>
+              <linearGradient id="zentra-shine-nav" x1="24" y1="6" x2="24" y2="42" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ffffff" stop-opacity="0.28"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M24 3.5 41.5 13v22L24 44.5 6.5 35V13L24 3.5Z" fill="url(#zentra-grad-nav)" fill-opacity="0.12"/>
+            <path d="M24 3.5 41.5 13v22L24 44.5 6.5 35V13L24 3.5Z" stroke="url(#zentra-grad-nav)" stroke-width="1.75" stroke-linejoin="round"/>
+            <path d="M24 9.5 35.5 16v16L24 38.5 12.5 32V16L24 9.5Z" fill="#09090b" fill-opacity="0.92"/>
+            <path d="M24 9.5 35.5 16v16L24 38.5 12.5 32V16L24 9.5Z" stroke="url(#zentra-grad-nav)" stroke-width="0.75" stroke-opacity="0.45"/>
+            <path d="M24 9.5 35.5 16 24 22.5 12.5 16 24 9.5Z" fill="url(#zentra-shine-nav)"/>
+            <path d="M15.5 17h17.5l-11 7.5h11.5v5.5H15.5l11-7.5H15.5V17Z" fill="url(#zentra-grad-nav)"/>
+            <circle cx="33.5" cy="14.5" r="1.75" fill="#22d3ee"/>
+            <circle cx="33.5" cy="14.5" r="3.25" stroke="#22d3ee" stroke-opacity="0.35" stroke-width="0.75"/>
+          </svg>
+          <span class="flex flex-col justify-center leading-none">
+            <span class="text-base font-extrabold tracking-[0.14em] text-white transition group-hover:text-cyan-50 sm:text-lg">ZENTRA</span>
+            <span class="mt-1 hidden text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-cyan-400/90 sm:block sm:text-[0.625rem]">Tecnología &amp; Seguridad</span>
+          </span>
+        </a>
+
+        <ul class="hidden lg:flex items-center justify-center gap-8 xl:gap-10" role="list">
+          <li><a href="#inicio" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Inicio</a></li>
+          <li><a href="#servicios" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Servicios</a></li>
+          <li><a href="#portafolio" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Portafolio</a></li>
+          <li><a href="#beneficios" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Por qué ZENTRA</a></li>
+          <li><a href="#contacto" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Contacto</a></li>
+        </ul>
+
+        <div class="flex items-center justify-end gap-4">
+          <a href="#contacto" class="hidden sm:inline text-sm text-zinc-400 hover:text-white transition">Contacto</a>
+          <a href="#" id="nav-whatsapp" class="hidden sm:inline-flex min-h-[40px] items-center rounded-lg bg-cyan-500 px-5 py-2 text-sm font-semibold text-neutral-950 hover:bg-cyan-400 transition shadow-glow-cyan" target="_blank" rel="noopener noreferrer">Cotizar</a>
+          <button type="button" id="menu-toggle" class="lg:hidden flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-700 text-white" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menú">
+            <svg id="icon-menu-open" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="icon-menu-close" class="hidden h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+    <div id="mobile-menu" class="hidden border-t border-zinc-800 lg:hidden">
+      <ul class="space-y-1 px-4 py-4">
+        <li><a href="#inicio" class="mobile-nav-link">Inicio</a></li>
+        <li><a href="#servicios" class="mobile-nav-link">Servicios</a></li>
+        <li><a href="#portafolio" class="mobile-nav-link">Portafolio</a></li>
+        <li><a href="#beneficios" class="mobile-nav-link">Por qué ZENTRA</a></li>
+        <li><a href="#contacto" class="mobile-nav-link">Contacto</a></li>
+        <li class="pt-2"><a href="#" id="mobile-whatsapp" class="flex h-12 items-center justify-center rounded-lg bg-cyan-500 font-semibold text-neutral-950" target="_blank" rel="noopener noreferrer">Cotizar</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO SOC — fondo operaciones + collage dispositivos (como mockup) -->
+    <section id="inicio" class="hero-soc relative flex min-h-[100svh] flex-col overflow-hidden pt-16" aria-labelledby="hero-heading">
+      <!-- Escena SOC: img/hero-soc-scene.png (centro de operaciones, globo holográfico, dispositivos) -->
+      <div class="hero-soc__bg absolute inset-0" style="background-image: url('img/hero-soc-scene.png');" role="img" aria-label="Centro de operaciones de seguridad ZENTRA"></div>
+      <!-- Gradiente izquierdo para legibilidad del texto -->
+      <div class="hero-soc__overlay absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+      <div class="hero-soc__glow absolute bottom-0 left-1/2 h-32 w-[80%] -translate-x-1/2 bg-cyan-500/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="hero-soc__inner relative z-10 mx-auto flex w-full max-w-6xl min-h-0 flex-1 flex-col px-4 pt-6 sm:px-6 sm:pt-8 lg:pt-10">
+        <div class="hero-soc__main flex flex-1 flex-col justify-center">
+        <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-8">
+          <!-- Texto y CTAs (columna izquierda) -->
+          <div class="hero-soc__text-panel relative z-10 lg:col-span-5 xl:col-span-5">
+            <p class="mb-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-400">
+              <svg class="h-4 w-4 text-cyan-400/90" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              Bogotá, Colombia
+            </p>
+
+            <h1 id="hero-heading" class="text-[1.85rem] font-extrabold uppercase leading-[1.1] text-white sm:text-4xl lg:text-[2.75rem]">
+              Protege tu negocio con
+              <span class="text-cyan-400">tecnología de confianza</span>
+            </h1>
+
+            <p class="mt-5 max-w-md text-sm leading-relaxed text-zinc-400 sm:text-base">
+              Instalamos sistemas de videovigilancia CCTV y damos soporte técnico a impresoras para que tu operación siga segura y sin interrupciones.
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href="#"
+                id="hero-whatsapp"
+                class="inline-flex min-h-[50px] w-full items-center justify-center rounded-lg bg-cyan-500 px-8 text-sm font-semibold text-neutral-950 shadow-glow-cyan transition hover:bg-cyan-400 sm:w-auto sm:min-w-[200px]"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Protege tu negocio</a>
+              <a
+                href="#contacto"
+                class="inline-flex min-h-[50px] w-full items-center justify-center rounded-lg border border-white/35 bg-white/5 px-8 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-cyan-400/50 hover:bg-white/10 sm:w-auto"
+              >Cotiza con confianza</a>
+            </div>
+          </div>
+
+          <!-- Columna visual derecha: visible en desktop (la escena completa está en el fondo) -->
+          <div class="hidden lg:col-span-7 lg:block xl:col-span-7" aria-hidden="true"></div>
+        </div>
+        </div>
+      </div>
+
+      <!-- Barra de servicios: anclada al pie del hero (transición a la siguiente sección) -->
+      <div class="hero-soc__pills-wrap relative z-20 mx-auto w-full max-w-6xl shrink-0 px-4 sm:px-6">
+        <ul class="hero-soc__pills-bar grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4" role="list" aria-label="Servicios rápidos">
+          <li class="quick-pill-glass flex items-center gap-3 rounded-xl px-4 py-3.5">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cyan-500/20 text-cyan-400" aria-hidden="true">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            </span>
+            <span class="text-sm font-semibold text-cyan-400">CCTV</span>
+          </li>
+          <li class="quick-pill-glass flex items-center gap-3 rounded-xl px-4 py-3.5">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cyan-500/20 text-cyan-400" aria-hidden="true">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </span>
+            <span class="text-sm font-semibold text-cyan-400">IP</span>
+          </li>
+          <li class="quick-pill-glass flex items-center gap-3 rounded-xl px-4 py-3.5">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cyan-500/20 font-bold text-cyan-400 text-xs" aria-hidden="true">HD</span>
+            <span class="text-sm font-semibold text-cyan-400">HD</span>
+          </li>
+          <li class="quick-pill-glass flex items-center gap-3 rounded-xl px-4 py-3.5">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cyan-500/20 text-cyan-400" aria-hidden="true">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            </span>
+            <span class="text-sm font-semibold text-cyan-400">Soporte</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Velo inferior: oculta reflejo del fondo sin duplicar efecto de piso -->
+      <div class="hero-soc__bottom-veil pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-40" aria-hidden="true"></div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="relative z-10 border-t border-zinc-800/60 bg-neutral-950 py-16 sm:py-20" aria-labelledby="servicios-heading">
+      <div class="mx-auto max-w-6xl space-y-6 px-4 sm:px-6 sm:space-y-8">
+
+        <!-- Bloque Videovigilancia -->
+        <article class="service-panel reveal-on-scroll overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/40">
+          <div class="grid grid-cols-1 lg:grid-cols-2">
+            <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+              <h2 id="servicios-heading" class="text-xl font-bold text-white sm:text-2xl">Videovigilancia</h2>
+              <p class="mt-3 text-sm leading-relaxed text-zinc-400">
+                Cámaras IP y análogas, monitoreo móvil 24/7 y cableado profesional para empresas y bodegas.
+              </p>
+              <ul class="mt-5 space-y-2.5" role="list">
+                <li class="flex items-center gap-2.5 text-sm text-zinc-300">
+                  <svg class="h-4 w-4 shrink-0 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                  Instalación y configuración DVR/NVR
+                </li>
+                <li class="flex items-center gap-2.5 text-sm text-zinc-300">
+                  <svg class="h-4 w-4 shrink-0 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                  Acceso remoto desde el celular
+                </li>
+                <li class="flex items-center gap-2.5 text-sm text-zinc-300">
+                  <svg class="h-4 w-4 shrink-0 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                  Materiales certificados y garantía
+                </li>
+              </ul>
+            </div>
+            <div class="img-service-wrap min-h-[220px] lg:min-h-full">
+              <img src="img/servicio-videovigilancia.png" alt="Monitoreo CCTV y videovigilancia profesional" class="img-service h-full min-h-[220px] w-full object-cover" loading="lazy" decoding="async" width="800" height="560">
+            </div>
+          </div>
+        </article>
+
+        <!-- Bloque Impresoras -->
+        <article class="service-panel reveal-on-scroll reveal-delay-1 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/40">
+          <div class="grid grid-cols-1 lg:grid-cols-2">
+            <div class="flex flex-col justify-center p-6 sm:p-8 lg:p-10 order-2 lg:order-1">
+              <h3 class="text-xl font-bold text-white sm:text-2xl">Reparación de impresoras</h3>
+              <p class="mt-3 text-sm leading-relaxed text-zinc-400">
+                Mantenimiento láser e inyección, repuestos originales y configuración en red local para tu oficina.
+              </p>
+              <ul class="mt-5 space-y-2.5" role="list">
+                <li class="flex items-center gap-2.5 text-sm text-zinc-300">
+                  <svg class="h-4 w-4 shrink-0 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                  Diagnóstico y mantenimiento correctivo
+                </li>
+                <li class="flex items-center gap-2.5 text-sm text-zinc-300">
+                  <svg class="h-4 w-4 shrink-0 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                  Impresoras láser e inyección de tinta
+                </li>
+                <li class="flex items-center gap-2.5 text-sm text-zinc-300">
+                  <svg class="h-4 w-4 shrink-0 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                  Configuración de equipos en red LAN
+                </li>
+              </ul>
+            </div>
+            <div class="img-service-wrap min-h-[220px] lg:min-h-full order-1 lg:order-2">
+              <img src="img/servicio-impresoras.png" alt="Mantenimiento y reparación de impresoras" class="img-service h-full min-h-[220px] w-full object-cover" loading="lazy" decoding="async" width="800" height="560">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PORTAFOLIO 2×2 -->
+    <section id="portafolio" class="py-16 sm:py-20" aria-labelledby="portafolio-heading">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <h2 id="portafolio-heading" class="reveal-on-scroll text-center text-xl font-bold uppercase tracking-wide text-white sm:text-2xl">
+          Proyectos con el <span class="text-cyan-400">sello ZENTRA</span>
+        </h2>
+
+        <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+          <figure class="portfolio-frame reveal-on-scroll group overflow-hidden rounded-xl">
+            <img src="img/rack_cableado.png" alt="Rack con cableado estructurado" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" width="600" height="450">
+          </figure>
+          <figure class="portfolio-frame reveal-on-scroll reveal-delay-1 group overflow-hidden rounded-xl">
+            <img src="img/mantenimiento_equipos_computo.png" alt="Mantenimiento de equipos de cómputo" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" width="600" height="450">
+            <figcaption class="sr-only">Mantenimiento de equipos de cómputo</figcaption>
+          </figure>
+          <figure class="portfolio-frame reveal-on-scroll reveal-delay-2 group overflow-hidden rounded-xl">
+            <img src="img/soc_dvr.png" alt="Centro de monitoreo CCTV" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" width="600" height="450">
+          </figure>
+          <figure class="portfolio-frame reveal-on-scroll reveal-delay-3 group overflow-hidden rounded-xl">
+            <img src="img/camaras_exterior.png" alt="Instalación de cámaras de seguridad en exterior" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" width="600" height="450">
+            <figcaption class="sr-only">Cámaras en exterior</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section id="beneficios" class="py-16 sm:py-20" aria-labelledby="beneficios-heading">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
+          <article class="benefit-panel rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 text-center">
+            <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-400" aria-hidden="true">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3 id="beneficios-heading" class="text-base font-bold text-white">Confiabilidad</h3>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-400 sm:text-sm">Equipos de calidad, instalación certificada y respaldo en cada proyecto entregado.</p>
+          </article>
+          <article class="benefit-panel rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 text-center">
+            <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-400" aria-hidden="true">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="text-base font-bold text-white">Rapidez</h3>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-400 sm:text-sm">Cotización clara, visita técnica ágil y ejecución en los tiempos que tu negocio necesita.</p>
+          </article>
+          <article class="benefit-panel rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 text-center">
+            <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-400" aria-hidden="true">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <h3 class="text-base font-bold text-white">Experiencia</h3>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-400 sm:text-sm">Trayectoria en seguridad electrónica y soporte de impresión para PYMES en Bogotá.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA + FORMULARIO DE CONTACTO -->
+    <section id="contacto" class="border-t border-zinc-800/60 py-16 sm:py-24" aria-labelledby="contacto-heading">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 id="contacto-heading" class="reveal-on-scroll text-2xl font-extrabold uppercase text-white sm:text-3xl">
+            Protege tu negocio con tecnología de confianza
+          </h2>
+          <p class="reveal-on-scroll mt-4 text-sm text-zinc-400 sm:text-base">
+            Agenda una visita técnica sin compromiso. Atendemos Bogotá y zona metropolitana.
+          </p>
+          <a href="#" id="footer-cta-whatsapp" class="reveal-on-scroll mt-8 inline-flex min-h-[52px] min-w-[240px] items-center justify-center rounded-lg bg-cyan-500 px-10 text-sm font-bold uppercase tracking-wide text-neutral-950 shadow-glow-cyan transition hover:bg-cyan-400 sm:text-base" target="_blank" rel="noopener noreferrer">
+            Hablar con un asesor
+          </a>
+        </div>
+
+        <div class="reveal-on-scroll reveal-delay-1 mx-auto mt-14 max-w-xl">
+          <div class="contact-form-panel rounded-2xl border border-cyan-500/20 bg-zinc-900/50 p-6 sm:p-8">
+            <header class="mb-6 text-center sm:text-left">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-500">Canal directo</p>
+              <h3 class="mt-2 text-lg font-bold text-white sm:text-xl">Solicita tu cotización</h3>
+              <p class="mt-2 text-sm text-zinc-400">Completa el formulario y te contactamos por WhatsApp.</p>
+            </header>
+
+            <form id="contact-form" class="space-y-5" novalidate>
+              <div>
+                <label for="contact-name" class="mb-1.5 block text-sm font-medium text-zinc-300">Nombre</label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="nombre"
+                  required
+                  autocomplete="name"
+                  placeholder="Tu nombre completo"
+                  class="contact-input w-full rounded-lg border border-zinc-700 bg-zinc-950/80 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 transition focus:border-cyan-500/60 focus:outline-none focus:ring-2 focus:ring-cyan-500/25"
+                >
+              </div>
+              <div>
+                <label for="contact-email-input" class="mb-1.5 block text-sm font-medium text-zinc-300">Correo</label>
+                <input
+                  type="email"
+                  id="contact-email-input"
+                  name="correo"
+                  required
+                  autocomplete="email"
+                  placeholder="correo@empresa.com"
+                  class="contact-input w-full rounded-lg border border-zinc-700 bg-zinc-950/80 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 transition focus:border-cyan-500/60 focus:outline-none focus:ring-2 focus:ring-cyan-500/25"
+                >
+              </div>
+              <div>
+                <label for="contact-details" class="mb-1.5 block text-sm font-medium text-zinc-300">Detalles del proyecto</label>
+                <textarea
+                  id="contact-details"
+                  name="detalles"
+                  required
+                  rows="4"
+                  placeholder="Cuéntanos qué necesitas: CCTV, impresoras, cantidad de equipos, ubicación..."
+                  class="contact-input w-full resize-y rounded-lg border border-zinc-700 bg-zinc-950/80 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 transition focus:border-cyan-500/60 focus:outline-none focus:ring-2 focus:ring-cyan-500/25"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="flex min-h-[50px] w-full items-center justify-center gap-2 rounded-lg bg-cyan-500 px-6 text-sm font-semibold text-neutral-950 shadow-glow-cyan transition hover:bg-cyan-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
+              >
+                Enviar solicitud por WhatsApp
+              </button>
+              <p id="contact-form-status" class="hidden text-center text-sm" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="relative border-t border-zinc-800/80 py-10" role="contentinfo">
+    <div class="mx-auto max-w-6xl px-4 text-center">
+      <a href="#inicio" class="zentra-logo mx-auto mb-4 inline-flex items-center justify-center gap-2.5 opacity-90 hover:opacity-100" aria-label="ZENTRA — Inicio">
+        <svg class="zentra-logo__icon h-8 w-8" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="zentra-grad-foot" x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#67e8f9"/><stop offset="0.45" stop-color="#22d3ee"/><stop offset="1" stop-color="#0891b2"/>
+            </linearGradient>
+            <linearGradient id="zentra-shine-foot" x1="24" y1="6" x2="24" y2="42" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ffffff" stop-opacity="0.28"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M24 3.5 41.5 13v22L24 44.5 6.5 35V13L24 3.5Z" fill="url(#zentra-grad-foot)" fill-opacity="0.12"/>
+          <path d="M24 3.5 41.5 13v22L24 44.5 6.5 35V13L24 3.5Z" stroke="url(#zentra-grad-foot)" stroke-width="1.75" stroke-linejoin="round"/>
+          <path d="M24 9.5 35.5 16v16L24 38.5 12.5 32V16L24 9.5Z" fill="#09090b" fill-opacity="0.92"/>
+          <path d="M24 9.5 35.5 16v16L24 38.5 12.5 32V16L24 9.5Z" stroke="url(#zentra-grad-foot)" stroke-width="0.75" stroke-opacity="0.45"/>
+          <path d="M24 9.5 35.5 16 24 22.5 12.5 16 24 9.5Z" fill="url(#zentra-shine-foot)"/>
+          <path d="M15.5 17h17.5l-11 7.5h11.5v5.5H15.5l11-7.5H15.5V17Z" fill="url(#zentra-grad-foot)"/>
+          <circle cx="33.5" cy="14.5" r="1.75" fill="#22d3ee"/>
+          <circle cx="33.5" cy="14.5" r="3.25" stroke="#22d3ee" stroke-opacity="0.35" stroke-width="0.75"/>
+        </svg>
+        <span class="text-sm font-extrabold tracking-[0.14em] text-white">ZENTRA</span>
+      </a>
+      <p class="text-xs text-zinc-500 sm:text-sm">
+        © 2026 ZENTRA | Tecnología &amp; Seguridad — Bogotá, Colombia.
+      </p>
+      <p class="mt-2 text-xs text-zinc-600">
+        <a href="mailto:contacto@zentra.co" id="contact-email" class="text-cyan-500/90 hover:text-cyan-400">contacto@zentra.co</a>
+        <span class="mx-2">·</span>
+        <a href="tel:+573178343978" id="contact-phone" class="hover:text-zinc-400">+57 317 834 3978</a>
+        <span class="mx-2">·</span>
+        <a href="#" id="footer-whatsapp" class="hover:text-cyan-400" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </p>
+    </div>
+    <div class="footer-star pointer-events-none absolute bottom-6 right-6 text-cyan-500/40" aria-hidden="true">
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 7.4H22l-6 4.6 2.3 7-6.3-4.6L5.7 19l2.3-7-6-4.6h7.6z"/></svg>
+    </div>
+  </footer>
+
+  <a href="#" id="fab-whatsapp" class="fab-whatsapp fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_20px_rgba(37,211,102,0.45)] transition hover:scale-105 hover:bg-[#20BD5A]" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="js/zentra.js" defer></script>
+</body>
+</html>

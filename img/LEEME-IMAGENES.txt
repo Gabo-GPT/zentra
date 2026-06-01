@@ -1,0 +1,46 @@
+Coloca tus fotografías en esta carpeta con estos nombres exactos:
+
+HERO (diseño SOC — pantalla completa)
+  hero-soc-scene.png
+    → Centro de operaciones: monitores, mapas, globo holográfico, collage de
+      dispositivos (móvil, tablet, CCTV). Ya incluido el mockup de referencia.
+    → Para reemplazar: usa una imagen panorámica 1920×1080 o mayor.
+
+HERO (alternativo, diseño anterior)
+  hero-camera.png
+    → Cámara domo IP moderna, fondo oscuro o PNG transparente (800×800 px mín.)
+
+SERVICIOS
+  servicio-videovigilancia.png
+    → Bloque Videovigilancia / CCTV
+  servicio-impresoras.png
+    → Bloque Reparación de impresoras
+
+PORTAFOLIO (galería 4 fotos)
+  rack_cableado.png                  → Rack / cableado estructurado ordenado
+  camaras_exterior.png               → Cámaras de seguridad en exterior
+  soc_dvr.png                        → Centro de monitoreo CCTV / DVR
+  mantenimiento_equipos_computo.png  → Mantenimiento de equipos de cómputo
+
+Formato recomendado: WebP (prioridad) + PNG como respaldo en <picture>.
+
+OPTIMIZACIÓN WEBP — Cómo convertir tus PNG actuales:
+  1. Entra a https://squoosh.app o usa ImageMagick / cwebp en terminal.
+  2. Convierte cada PNG a WebP (calidad 80–85 recomendada).
+  3. Guarda en img/ con el mismo nombre pero extensión .webp:
+       servicio-videovigilancia.webp
+       servicio-impresoras.webp
+       rack_cableado.webp
+       mantenimiento_equipos_computo.webp
+       soc_dvr.webp
+       camaras_exterior.webp
+  4. El HTML ya usa <picture>: el navegador carga WebP si existe;
+     si no, usa el PNG automáticamente.
+
+  PowerShell (con cwebp instalado):
+    cd zentra\img
+    cwebp -q 85 servicio-videovigilancia.png -o servicio-videovigilancia.webp
+
+LOGO (SVG — no requiere WebP)
+  logo-icon.svg
+  logo-zentra.svg

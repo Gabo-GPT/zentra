@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" role="img" aria-label="ZENTRA">
+  <defs>
+    <linearGradient id="zi-grad" x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67e8f9"/>
+      <stop offset="0.45" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#0891b2"/>
+    </linearGradient>
+    <linearGradient id="zi-shine" x1="24" y1="6" x2="24" y2="42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path d="M24 3.5 41.5 13v22L24 44.5 6.5 35V13L24 3.5Z" fill="url(#zi-grad)" fill-opacity="0.12"/>
+  <path d="M24 3.5 41.5 13v22L24 44.5 6.5 35V13L24 3.5Z" stroke="url(#zi-grad)" stroke-width="1.75" stroke-linejoin="round"/>
+  <path d="M24 9.5 35.5 16v16L24 38.5 12.5 32V16L24 9.5Z" fill="#09090b" fill-opacity="0.92"/>
+  <path d="M24 9.5 35.5 16v16L24 38.5 12.5 32V16L24 9.5Z" stroke="url(#zi-grad)" stroke-width="0.75" stroke-opacity="0.45"/>
+  <path d="M24 9.5 35.5 16 24 22.5 12.5 16 24 9.5Z" fill="url(#zi-shine)"/>
+  <path d="M15.5 17h17.5l-11 7.5h11.5v5.5H15.5l11-7.5H15.5V17Z" fill="url(#zi-grad)"/>
+  <circle cx="33.5" cy="14.5" r="1.75" fill="#22d3ee"/>
+  <circle cx="33.5" cy="14.5" r="3.25" stroke="#22d3ee" stroke-opacity="0.35" stroke-width="0.75"/>
+</svg>

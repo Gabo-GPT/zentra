@@ -1,0 +1,362 @@
+/**
+ * ZENTRA — Hero SOC + componentes
+ */
+
+/* Logo ZENTRA */
+.zentra-logo__icon {
+  filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.28));
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.zentra-logo:hover .zentra-logo__icon,
+.zentra-logo:focus-visible .zentra-logo__icon {
+  filter: drop-shadow(0 0 14px rgba(34, 211, 238, 0.5));
+  transform: scale(1.03);
+}
+
+@media (max-width: 380px) {
+  .zentra-logo span span:last-child {
+    display: none;
+  }
+}
+
+/* Contenedor hero: capas aisladas + columna flex (texto arriba, pills abajo) */
+.hero-soc {
+  isolation: isolate;
+}
+
+.hero-soc__inner {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.hero-soc__main {
+  width: 100%;
+  padding-bottom: 0.5rem;
+}
+
+/* Barra de pills al pie del hero, antes de #servicios */
+.hero-soc__pills-wrap {
+  margin-top: auto;
+  padding-top: clamp(1.5rem, 4vh, 2.5rem);
+  padding-bottom: clamp(1rem, 2.5vh, 1.75rem);
+}
+
+@media (min-width: 1024px) {
+  .hero-soc__main {
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+  }
+
+  /* En desktop las pantallas del mockup están a la derecha/abajo: pills ocupan solo el ancho izquierdo-centro */
+  .hero-soc__pills-wrap {
+    padding-top: clamp(2rem, 6vh, 4rem);
+    padding-bottom: 1.5rem;
+  }
+
+  .hero-soc__pills-bar {
+    max-width: 100%;
+    margin-right: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-soc__main {
+    justify-content: flex-start;
+    flex: 1 1 auto;
+    padding-top: 0.25rem;
+    min-height: 0;
+  }
+
+  .hero-soc__pills-wrap {
+    padding-top: 1.25rem;
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* En pantallas altas, fondo un poco más alto para dejar zona de piso libre bajo las pantallas */
+@media (min-width: 1024px) and (min-height: 700px) {
+  .hero-soc__bg {
+    background-position: 68% 38%;
+  }
+}
+
+/* Fondo panorámico — siempre cover, sin repetición */
+.hero-soc__bg {
+  z-index: 0;
+  background-color: #050505;
+  /* background-image en index.html (ruta relativa al HTML, funciona con file://) */
+  background-size: cover;
+  background-position: 68% center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+.hero-soc__overlay {
+  z-index: 1;
+  background: linear-gradient(
+    100deg,
+    #050505 0%,
+    #050505 42%,
+    rgba(5, 5, 5, 0.96) 50%,
+    rgba(5, 5, 5, 0.75) 60%,
+    rgba(5, 5, 5, 0.3) 75%,
+    transparent 100%
+  );
+}
+
+.hero-soc__glow {
+  z-index: 1;
+}
+
+/* Velo bajo el contenido: tapa reflejo de la imagen sin segunda capa de “piso” */
+.hero-soc__bottom-veil {
+  background: linear-gradient(
+    to top,
+    #050505 0%,
+    #050505 35%,
+    rgba(5, 5, 5, 0.85) 55%,
+    transparent 100%
+  );
+}
+
+/* Panel de texto en móvil */
+.hero-soc__text-panel::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -0.75rem -1rem;
+  border-radius: 1rem;
+  background: rgba(5, 5, 5, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+@media (min-width: 1024px) {
+  .hero-soc__text-panel::before {
+    display: none;
+  }
+}
+
+/* Barra de pills: por encima del velo y del fondo */
+.hero-soc__pills-bar {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+}
+
+.hero-soc__pills-bar::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -0.75rem -0.5rem -1rem;
+  border-radius: 1rem;
+  background: #09090b;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Tarjetas CCTV / IP / HD / Soporte — lectura nítida */
+.quick-pill-glass {
+  position: relative;
+  z-index: 21;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(9, 9, 11, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.quick-pill-glass:hover {
+  border-color: rgba(34, 211, 238, 0.4);
+  background: rgba(12, 12, 14, 0.98);
+}
+
+/* Navbar sólida al salir del hero */
+#site-header.header-solid {
+  background: rgba(10, 10, 10, 0.92);
+  border-color: rgba(39, 39, 42, 0.8);
+}
+
+@media (max-width: 1023px) {
+  .hero-soc__bg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 72% 28%;
+  }
+
+  .hero-soc__overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(5, 5, 5, 0.5) 0%,
+      #050505 40%,
+      #050505 78%,
+      #050505 100%
+    );
+  }
+
+  .hero-soc__bottom-veil {
+    height: 11rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero-soc__bg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 78% 22%;
+  }
+}
+
+/* Paneles de servicio */
+.service-panel {
+  transition: border-color 0.25s ease;
+}
+
+.service-panel:hover {
+  border-color: rgba(6, 182, 212, 0.25);
+}
+
+.img-service-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.img-service-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10, 10, 10, 0.5) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .img-service-wrap::after {
+    background: linear-gradient(90deg, rgba(10, 10, 10, 0.55) 0%, transparent 35%);
+  }
+}
+
+.img-service {
+  transition: transform 0.5s ease;
+}
+
+.service-panel:hover .img-service {
+  transform: scale(1.04);
+}
+
+.portfolio-frame {
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  background: rgb(24 24 27);
+}
+
+.portfolio-frame:hover {
+  border-color: rgba(34, 211, 238, 0.65);
+  box-shadow: 0 0 24px -8px rgba(6, 182, 212, 0.25);
+}
+
+.benefit-panel {
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.benefit-panel:hover {
+  border-color: rgba(34, 211, 238, 0.3);
+  transform: translateY(-2px);
+}
+
+.mobile-nav-link {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  padding: 0 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  color: rgb(212 212 216);
+}
+
+.mobile-nav-link:hover {
+  background: rgb(39 39 42);
+  color: rgb(34 211 238);
+}
+
+.fab-whatsapp {
+  margin-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.fab-whatsapp:hover {
+  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.55);
+}
+
+.footer-star svg {
+  animation: star-pulse 4s ease-in-out infinite;
+}
+
+@keyframes star-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-star svg,
+  .service-panel:hover .img-service {
+    animation: none;
+    transform: none;
+  }
+  html { scroll-behavior: auto; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* =============================================================================
+   Scroll reveal — fade-in-up
+   ============================================================================= */
+/* Scroll reveal — solo oculta si JS está activo (evita contenido invisible) */
+html.js-reveal .reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+html.js-reveal .reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html.js-reveal .reveal-on-scroll.reveal-delay-1 { transition-delay: 0.1s; }
+html.js-reveal .reveal-on-scroll.reveal-delay-2 { transition-delay: 0.2s; }
+html.js-reveal .reveal-on-scroll.reveal-delay-3 { transition-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js-reveal .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* =============================================================================
+   Formulario de contacto — estilo SOC
+   ============================================================================= */
+.contact-form-panel {
+  box-shadow:
+    0 0 0 1px rgba(6, 182, 212, 0.06),
+    0 16px 48px -16px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.contact-form-panel:hover {
+  border-color: rgba(6, 182, 212, 0.32);
+}
+
+.contact-input:hover {
+  border-color: rgba(113, 113, 122, 0.9);
+}
