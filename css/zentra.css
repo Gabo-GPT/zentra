@@ -100,32 +100,35 @@
 
 /* En pantallas altas, fondo un poco más alto para dejar zona de piso libre bajo las pantallas */
 @media (min-width: 1024px) and (min-height: 700px) {
-  .hero-soc__bg {
-    background-position: 68% 38%;
+  .hero-soc__bg-img {
+    object-position: 68% 38%;
   }
 }
 
-/* Fondo panorámico — siempre cover, sin repetición */
+/* Fondo panorámico — imagen de presentación */
 .hero-soc__bg {
   z-index: 0;
   background-color: #050505;
-  background-image: url('../img/fondo_camara.png');
-  background-size: cover;
-  background-position: 68% center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
+  overflow: hidden;
+}
+
+.hero-soc__bg-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% center;
 }
 
 .hero-soc__overlay {
   z-index: 1;
   background: linear-gradient(
     100deg,
-    #050505 0%,
-    #050505 42%,
-    rgba(5, 5, 5, 0.96) 50%,
-    rgba(5, 5, 5, 0.75) 60%,
-    rgba(5, 5, 5, 0.3) 75%,
-    transparent 100%
+    rgba(5, 5, 5, 0.92) 0%,
+    rgba(5, 5, 5, 0.78) 38%,
+    rgba(5, 5, 5, 0.45) 52%,
+    rgba(5, 5, 5, 0.15) 68%,
+    transparent 82%
   );
 }
 
@@ -204,19 +207,17 @@
 }
 
 @media (max-width: 1023px) {
-  .hero-soc__bg {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 72% 28%;
+  .hero-soc__bg-img {
+    object-position: 72% 28%;
   }
 
   .hero-soc__overlay {
     background: linear-gradient(
       180deg,
-      rgba(5, 5, 5, 0.5) 0%,
-      #050505 40%,
-      #050505 78%,
-      #050505 100%
+      rgba(5, 5, 5, 0.55) 0%,
+      rgba(5, 5, 5, 0.82) 42%,
+      rgba(5, 5, 5, 0.7) 72%,
+      rgba(5, 5, 5, 0.85) 100%
     );
   }
 
@@ -226,18 +227,17 @@
 }
 
 @media (max-width: 639px) {
-  .hero-soc__bg {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 78% 22%;
+  .hero-soc__bg-img {
+    object-position: 78% 22%;
   }
 }
 
 /* Botón pastilla — Conoce lo nuevo (referencia PC Tecnología, adaptado ZENTRA) */
 .btn-conoce-nuevo {
   border-radius: 9999px;
-  background: #ffffff;
-  color: #0a0a0a;
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+  text-decoration: none;
   letter-spacing: 0.02em;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
   transition:
