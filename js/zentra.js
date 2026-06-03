@@ -13,7 +13,92 @@ const ZENTRA_CONFIG = {
 const SERVICE_CHECK_ICON =
   '<svg class="service-modal-guarantees__icon h-4 w-4 shrink-0 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>';
 
+/** Tarjetas «Conoce lo nuevo» — página servicios.html */
+const SERVICE_SHOWCASE = [
+  {
+    id: 'cctv',
+    number: 1,
+    title: 'CCTV',
+    tagline: 'Videovigilancia y sistemas de seguridad.',
+    items: [
+      { code: 'IP', text: 'Cámaras IP, domo y bala para interior y exterior' },
+      { code: 'HD', text: 'Grabación NVR/DVR con retención configurable' },
+      { code: 'APP', text: 'Monitoreo remoto seguro desde móvil o PC' },
+      { code: 'NET', text: 'Integración con tu red y cableado estructurado' },
+    ],
+  },
+  {
+    id: 'electricas',
+    number: 2,
+    title: 'Electricidad',
+    tagline: 'Mantenimiento e instalaciones eléctricas.',
+    items: [
+      { code: 'RET', text: 'Proyectos bajo normativa RETIE' },
+      { code: 'TAB', text: 'Tableros, canalización y distribución de potencia' },
+      { code: 'LED', text: 'Iluminación empresarial e industrial' },
+      { code: 'IND', text: 'Mantenimiento en planta y cuadros de control' },
+    ],
+  },
+  {
+    id: 'soporte',
+    number: 3,
+    title: 'Soporte Técnico',
+    tagline: 'Asistencia técnica especializada.',
+    items: [
+      { code: 'PC', text: 'Mantenimiento preventivo y correctivo de equipos' },
+      { code: 'IMP', text: 'Impresoras láser e inyección en red' },
+      { code: 'DOC', text: 'Diagnóstico con informe de hallazgos' },
+      { code: 'SLA', text: 'Tiempos de respuesta acordados por contrato' },
+    ],
+  },
+  {
+    id: 'redes',
+    number: 4,
+    title: 'Configuración de Redes',
+    tagline: 'Gestión de redes y conectividad.',
+    items: [
+      { code: 'GPON', text: 'Fibra óptica y redes de alto rendimiento' },
+      { code: 'LAN', text: 'Cableado Cat6/Cat6A certificado' },
+      { code: 'WAN', text: 'Enlaces multi-sede y VPN' },
+      { code: 'DOC', text: 'Documentación as-built entregada al cliente' },
+    ],
+  },
+  {
+    id: 'continuidad',
+    number: 5,
+    title: 'Continuidad (Pilas/UPS)',
+    tagline: 'Sistemas de respaldo y energía ininterrumpida.',
+    items: [
+      { code: 'UPS', text: 'Equipos dimensionados para carga crítica' },
+      { code: 'BAT', text: 'Bancos de baterías instalados y mantenidos' },
+      { code: 'TRF', text: 'Transferencias eléctricas automatizadas' },
+      { code: 'TST', text: 'Pruebas de autonomía documentadas' },
+    ],
+  },
+];
+
 const SERVICE_CATEGORIES = {
+  cctv: {
+    title: 'CCTV',
+    description: 'Videovigilancia y sistemas de seguridad para proteger tu operación.',
+    context:
+      'Diseñamos e instalamos soluciones CCTV con cámaras IP y analógicas, grabación confiable y acceso remoto seguro. Integramos videovigilancia con tu red para monitoreo en tiempo real desde cualquier sede.',
+    services: [
+      { title: 'Cámaras IP y analógicas', text: 'Domo, bala y PTZ para interior y exterior con visión nocturna.' },
+      { title: 'Grabación y NVR/DVR', text: 'Almacenamiento redundante y retención de video según política del cliente.' },
+      { title: 'Monitoreo remoto', text: 'Acceso seguro desde móvil y PC con alertas configurables.' },
+    ],
+    gallery: [
+      { src: 'img/carrusel/iluminaria.png', alt: 'Instalación técnica en sitio ZENTRA' },
+      { src: 'img/Redes/lanwan.png', alt: 'Integración con infraestructura de red' },
+    ],
+    guarantees: [
+      'Equipos de marcas reconocidas y garantía de fábrica',
+      'Cableado ordenado y protección contra interferencias',
+      'Capacitación básica al personal de monitoreo',
+      'Soporte post-instalación en Bogotá',
+    ],
+  },
   soporte: {
     title: 'Soporte Técnico',
     description: 'Continuidad operativa para tu parque tecnológico con respuesta ágil en Bogotá.',
@@ -48,10 +133,10 @@ const SERVICE_CATEGORIES = {
       { title: 'Redes WAN', text: 'VPN, enlaces de área amplia e interconexión multi-sede.' },
     ],
     gallery: [
-      { src: 'img/rack_cableado.png', alt: 'Rack con cableado estructurado certificado' },
-      { src: 'img/soc_dvr.png', alt: 'Centro de operaciones y red de monitoreo' },
-      { src: 'img/camaras_exterior.png', alt: 'Despliegue de infraestructura en exterior' },
-      { src: 'img/servicio-videovigilancia.png', alt: 'Integración de red con sistemas IP' },
+      { src: 'img/Redes/lanwan.png', alt: 'Infraestructura de redes LAN y WAN' },
+      { src: 'img/Redes/wan.png', alt: 'Enlace y despliegue de red WAN' },
+      { src: 'img/Redes/olt.pmg.webp', alt: 'Equipo OLT para red GPON con fibra óptica' },
+      { src: 'img/Redes/hfc.pmg.png', alt: 'Infraestructura de red HFC' },
     ],
     guarantees: [
       'Certificación de puntos y pruebas Fluke',
@@ -71,10 +156,10 @@ const SERVICE_CATEGORIES = {
       { title: 'Proyectos industriales', text: 'Media y baja tensión, tableros de control y mantenimiento en planta.' },
     ],
     gallery: [
-      { src: 'img/rack_cableado.png', alt: 'Canalización y organización de cableado de potencia' },
-      { src: 'img/camaras_exterior.png', alt: 'Instalación eléctrica en entorno exterior' },
-      { src: 'img/soc_dvr.png', alt: 'Tablero y sala técnica empresarial' },
-      { src: 'img/mantenimiento_equipos_computo.png', alt: 'Mantenimiento eléctrico en sala de equipos' },
+      { src: 'img/carrusel/tablero.png', alt: 'Tablero eléctrico empresarial instalado por ZENTRA' },
+      { src: 'img/carrusel/transferencias_electricas.png', alt: 'Transferencias eléctricas y distribución de energía' },
+      { src: 'img/carrusel/baterias.png', alt: 'Sistema de respaldo con baterías' },
+      { src: 'img/carrusel/banco_de_baterías.png', alt: 'Banco de baterías para continuidad operativa' },
     ],
     guarantees: [
       'Cumplimiento normativo RETIE',
@@ -83,6 +168,41 @@ const SERVICE_CATEGORIES = {
       'Proyectos alineados a estándares ISO de gestión',
     ],
   },
+  continuidad: {
+    title: 'Continuidad (Pilas/UPS)',
+    description: 'Sistemas de respaldo y energía ininterrumpida para tu negocio.',
+    context:
+      'Implementamos bancos de baterías, UPS y esquemas de respaldo que mantienen en operación equipos críticos ante cortes de energía. Dimensionamos la solución según carga, autonomía requerida y espacio disponible.',
+    services: [
+      { title: 'UPS y respaldo', text: 'Equipos dimensionados para servidores, CCTV y redes.' },
+      { title: 'Bancos de baterías', text: 'Instalación, mantenimiento y pruebas de capacidad.' },
+      { title: 'Transferencias eléctricas', text: 'Conmutación segura entre fuentes de energía.' },
+    ],
+    gallery: [
+      { src: 'img/carrusel/baterias.png', alt: 'Sistema de respaldo con baterías' },
+      { src: 'img/carrusel/banco_de_baterías.png', alt: 'Banco de baterías para continuidad operativa' },
+      { src: 'img/carrusel/transferencias_electricas.png', alt: 'Transferencias eléctricas' },
+      { src: 'img/carrusel/tablero.png', alt: 'Tablero eléctrico empresarial' },
+    ],
+    guarantees: [
+      'Cálculo de autonomía documentado',
+      'Pruebas de carga y descarga programadas',
+      'Repuestos y mantenimiento preventivo',
+      'Integración con tableros bajo normativa',
+    ],
+  },
+};
+
+const SHOWCASE_ICONS = {
+  cctv: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>',
+  electricas:
+    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>',
+  soporte:
+    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>',
+  redes:
+    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>',
+  continuidad:
+    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10m0-5h12.5M20 7v10m0-5H7.5M7 11h10"/>',
 };
 
 const detailHtmlCache = Object.create(null);
@@ -95,7 +215,80 @@ function escapeHtml(text) {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function sanitizeUserText(text, maxLen = 800) {
+  return String(text)
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '')
+    .trim()
+    .slice(0, maxLen);
+}
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email);
+}
+
+const MEDIA_PROTECT_SELECTOR = '.media-protected';
+
+function isProtectedMediaTarget(node) {
+  return node?.nodeType === 1 && Boolean(node.closest?.(MEDIA_PROTECT_SELECTOR));
+}
+
+function hardenProtectedImage(img) {
+  if (!img || img.dataset.mediaHardened) return;
+  img.draggable = false;
+  img.setAttribute('draggable', 'false');
+  img.referrerPolicy = 'same-origin';
+  img.dataset.mediaHardened = '1';
+}
+
+function scanProtectedImages(root = document) {
+  root.querySelectorAll?.(`${MEDIA_PROTECT_SELECTOR} img`)?.forEach(hardenProtectedImage);
+}
+
+function initMediaProtection() {
+  scanProtectedImages();
+
+  document.addEventListener(
+    'contextmenu',
+    (e) => {
+      if (isProtectedMediaTarget(e.target)) e.preventDefault();
+    },
+    { capture: true }
+  );
+
+  document.addEventListener(
+    'dragstart',
+    (e) => {
+      if (isProtectedMediaTarget(e.target)) e.preventDefault();
+    },
+    { capture: true }
+  );
+
+  document.addEventListener(
+    'keydown',
+    (e) => {
+      const img = e.target?.closest?.(`${MEDIA_PROTECT_SELECTOR} img`);
+      if (!img) return;
+      const key = e.key?.toLowerCase();
+      if (e.key === 'PrintScreen') e.preventDefault();
+      if ((e.ctrlKey || e.metaKey) && (key === 's' || key === 'u' || key === 'p')) {
+        e.preventDefault();
+      }
+    },
+    { capture: true }
+  );
+
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      for (const node of mutation.addedNodes) {
+        if (node.nodeType === 1) scanProtectedImages(node);
+      }
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
 }
 
 function buildWhatsAppUrl(customMessage) {
@@ -130,14 +323,23 @@ function initContactForm() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = $('contact-name')?.value.trim();
-    const email = $('contact-email-input')?.value.trim();
-    const details = $('contact-details')?.value.trim();
+    const name = sanitizeUserText($('contact-name')?.value, 120);
+    const email = sanitizeUserText($('contact-email-input')?.value, 160);
+    const details = sanitizeUserText($('contact-details')?.value, 800);
     const status = $('contact-form-status');
 
     if (!name || !email || !details) {
       if (status) {
         status.textContent = 'Por favor completa todos los campos.';
+        status.className = 'text-center text-sm text-red-400';
+        status.classList.remove('hidden');
+      }
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      if (status) {
+        status.textContent = 'Ingresa un correo electrónico válido.';
         status.className = 'text-center text-sm text-red-400';
         status.classList.remove('hidden');
       }
@@ -183,8 +385,8 @@ function renderServiceDetailHtml(category) {
 
   for (const img of meta.gallery) {
     parts.push(
-      `<figure class="service-modal-gallery__item">`,
-      `<img data-src="${escapeHtml(img.src)}" alt="${escapeHtml(img.alt)}" class="service-modal-gallery__img" decoding="async" width="400" height="300">`,
+      `<figure class="service-modal-gallery__item media-protected">`,
+      `<img data-src="${escapeHtml(img.src)}" alt="${escapeHtml(img.alt)}" class="service-modal-gallery__img" decoding="async" width="400" height="300" draggable="false">`,
       `</figure>`
     );
   }
@@ -211,6 +413,86 @@ function hydrateModalImages(container) {
     img.src = img.dataset.src;
     img.loading = 'lazy';
     img.removeAttribute('data-src');
+    hardenProtectedImage(img);
+  });
+}
+
+function renderServiciosShowcaseHtml() {
+  const parts = [];
+
+  for (const card of SERVICE_SHOWCASE) {
+    const iconPath = SHOWCASE_ICONS[card.id] || SHOWCASE_ICONS.soporte;
+    const listItems = card.items
+      .map(
+        (item) =>
+          `<li><strong>${escapeHtml(item.code)}:</strong> ${escapeHtml(item.text)}</li>`
+      )
+      .join('');
+
+    parts.push(
+      `<article class="servicios-nist-card service-category-enter reveal-on-scroll" data-servicios-card tabindex="0" role="listitem" aria-label="${escapeHtml(card.title)}">`,
+      `<div class="servicios-nist-card__inner">`,
+      `<div class="servicios-nist-card__front">`,
+      `<span class="servicios-nist-card__icon" aria-hidden="true">`,
+      `<svg class="h-12 w-12 sm:h-14 sm:w-14" fill="none" stroke="currentColor" viewBox="0 0 24 24">${iconPath}</svg>`,
+      `</span>`,
+      `<h3 class="servicios-nist-card__heading">${card.number}. ${escapeHtml(card.title)}</h3>`,
+      `<p class="servicios-nist-card__tagline">${escapeHtml(card.tagline)}</p>`,
+      `</div>`,
+      `<div class="servicios-nist-card__panel" aria-hidden="true">`,
+      `<h3 class="servicios-nist-card__panel-title">${card.number}. ${escapeHtml(card.title)}</h3>`,
+      `<ul class="servicios-nist-card__list">${listItems}</ul>`,
+      `<button type="button" class="servicios-nist-card__more btn-service-detail" data-service-category="${escapeHtml(card.id)}" aria-haspopup="dialog" aria-controls="service-modal">Ver ficha completa</button>`,
+      `</div>`,
+      `</div>`,
+      `</article>`
+    );
+  }
+
+  return parts.join('');
+}
+
+function initServiciosShowcase() {
+  const mount = $('servicios-showcase-grid');
+  if (!mount) return;
+
+  mount.innerHTML = renderServiciosShowcaseHtml();
+  const cards = mount.querySelectorAll('[data-servicios-card]');
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  const setActive = (activeCard) => {
+    cards.forEach((c) => {
+      const on = c === activeCard;
+      c.classList.toggle('is-active', on);
+      c.querySelector('.servicios-nist-card__panel')?.setAttribute('aria-hidden', on ? 'false' : 'true');
+    });
+  };
+
+  cards.forEach((card) => {
+    if (canHover) {
+      card.addEventListener('mouseenter', () => setActive(card));
+      card.addEventListener('mouseleave', () => setActive(null));
+    }
+
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('[data-service-category]')) return;
+      if (!canHover) {
+        const next = card.classList.contains('is-active') ? null : card;
+        setActive(next);
+      }
+    });
+
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (e.target.closest('[data-service-category]')) return;
+        e.preventDefault();
+        setActive(card.classList.contains('is-active') ? null : card);
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('[data-servicios-card]')) setActive(null);
   });
 }
 
@@ -220,9 +502,8 @@ function initServiceCategoryModal() {
   const descEl = $('service-modal-desc');
   const mountEl = $('service-modal-mount');
   const bodyEl = modal?.querySelector('.service-modal__body');
-  const grid = $('servicios-grid');
 
-  if (!modal || !titleEl || !descEl || !mountEl || !grid) return;
+  if (!modal || !titleEl || !descEl || !mountEl) return;
 
   let lastFocused = null;
   let activeCategory = null;
@@ -273,9 +554,10 @@ function initServiceCategoryModal() {
     lastFocused?.focus?.();
   };
 
-  grid.addEventListener('click', (e) => {
+  document.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-service-category]');
-    if (btn) openModal(btn.dataset.serviceCategory, btn);
+    if (!btn || !SERVICE_CATEGORIES[btn.dataset.serviceCategory]) return;
+    openModal(btn.dataset.serviceCategory, btn);
   });
 
   modal.addEventListener('click', (e) => {
@@ -289,7 +571,7 @@ function initMotion() {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const revealEls = document.querySelectorAll('.reveal-on-scroll');
   const categoryCards = document.querySelectorAll('.service-category-enter');
-  const grid = $('servicios-grid');
+  const grid = $('servicios-grid') || $('servicios-showcase-grid');
 
   if (reducedMotion) {
     revealEls.forEach((el) => el.classList.add('is-visible'));
@@ -470,6 +752,7 @@ function initPortfolioCarousel() {
   let startScrollLeft = 0;
 
   viewport.addEventListener('pointerdown', (e) => {
+    if (e.target.closest('[data-portfolio-zoom]')) return;
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     isDragging = true;
     stopAutoplay();
@@ -527,10 +810,74 @@ function initPortfolioCarousel() {
   startAutoplay();
 }
 
+function initPortfolioLightbox() {
+  const lightbox = $('portfolio-lightbox');
+  const imgEl = $('portfolio-lightbox-img');
+  const captionEl = $('portfolio-lightbox-caption');
+  if (!lightbox || !imgEl || !captionEl) return;
+
+  let lastFocused = null;
+
+  const open = (src, alt, title) => {
+    lastFocused = document.activeElement;
+    imgEl.src = src;
+    imgEl.alt = alt;
+    hardenProtectedImage(imgEl);
+    captionEl.textContent = title;
+    lightbox.removeAttribute('hidden');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('overflow-hidden');
+    requestAnimationFrame(() => lightbox.classList.add('is-open'));
+    lightbox.querySelector('.portfolio-lightbox__close')?.focus();
+  };
+
+  const close = () => {
+    if (!lightbox.classList.contains('is-open')) return;
+
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('overflow-hidden');
+
+    window.setTimeout(() => {
+      if (!lightbox.classList.contains('is-open')) {
+        lightbox.setAttribute('hidden', '');
+        imgEl.removeAttribute('src');
+        imgEl.alt = '';
+        captionEl.textContent = '';
+      }
+    }, 320);
+
+    lastFocused?.focus?.();
+  };
+
+  document.querySelectorAll('[data-portfolio-zoom]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const img = btn.querySelector('img');
+      if (!img?.src) return;
+      const title =
+        btn.closest('.portfolio-carousel__card-inner')?.querySelector('.portfolio-carousel__title')?.textContent?.trim() ||
+        img.alt;
+      open(img.currentSrc || img.src, img.alt, title);
+    });
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target.closest('[data-portfolio-lightbox-close]')) close();
+  });
+
+  return { close, isOpen: () => lightbox.classList.contains('is-open') };
+}
+
+function initServiciosPageHeader() {
+  const header = $('site-header');
+  if (!header || !document.body.classList.contains('page-servicios')) return;
+  header.classList.add('header-solid', 'shadow-lg', 'shadow-black/30');
+}
+
 function initHeaderScroll() {
   const header = $('site-header');
   const hero = $('inicio');
-  if (!header) return;
+  if (!header || !hero) return;
 
   let heroBottom = 400;
   let ticking = false;
@@ -562,22 +909,27 @@ function initHeaderScroll() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  initMediaProtection();
   applyWhatsAppLinks();
   applyContactInfo();
   initContactForm();
-  initMotion();
+  initServiciosShowcase();
 
   const modalApi = initServiceCategoryModal();
+  const lightboxApi = initPortfolioLightbox();
   const menuApi = initMobileMenu();
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-    if (modalApi?.isOpen()) modalApi.closeModal();
+    if (lightboxApi?.isOpen()) lightboxApi.close();
+    else if (modalApi?.isOpen()) modalApi.closeModal();
     else if (menuApi?.isOpen()) menuApi.close();
   });
 
+  initServiciosPageHeader();
   initHeaderScroll();
   initPortfolioCarousel();
+  initMotion();
 
   const hash = window.location.hash.slice(1);
   if (SERVICE_CATEGORIES[hash]) modalApi?.openModal(hash);

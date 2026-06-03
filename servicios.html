@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Servicios ZENTRA — CCTV, electricidad, soporte técnico, redes y continuidad energética en Bogotá.">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
+  <title>Servicios | ZENTRA Tecnología &amp; Seguridad</title>
+  <link rel="icon" href="img/logo-icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tailwind.min.css">
+  <link rel="stylesheet" href="css/zentra.css">
+</head>
+
+<body class="page-servicios bg-neutral-950 text-zinc-100 antialiased">
+
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-zinc-800/80 bg-neutral-950/95 backdrop-blur-xl">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <nav class="flex h-16 items-center justify-between lg:grid lg:grid-cols-[auto_1fr_auto] lg:gap-12" aria-label="Principal">
+        <a href="index.html#inicio" class="zentra-logo group flex items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-500 focus-visible:outline-offset-2" aria-label="ZENTRA — Inicio">
+          <svg class="zentra-logo__icon h-10 w-10 shrink-0 sm:h-11 sm:w-11" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="zentra-grad-nav" x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#67e8f9"/><stop offset="0.45" stop-color="#22d3ee"/><stop offset="1" stop-color="#0891b2"/>
+              </linearGradient>
+              <linearGradient id="zentra-shine-nav" x1="24" y1="6" x2="24" y2="42" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ffffff" stop-opacity="0.28"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M24 3.5 41.5 13v22L24 44.5 6.5 35V13L24 3.5Z" fill="url(#zentra-grad-nav)" fill-opacity="0.12"/>
+            <path d="M24 3.5 41.5 13v22L24 44.5 6.5 35V13L24 3.5Z" stroke="url(#zentra-grad-nav)" stroke-width="1.75" stroke-linejoin="round"/>
+            <path d="M24 9.5 35.5 16v16L24 38.5 12.5 32V16L24 9.5Z" fill="#09090b" fill-opacity="0.92"/>
+            <path d="M24 9.5 35.5 16v16L24 38.5 12.5 32V16L24 9.5Z" stroke="url(#zentra-grad-nav)" stroke-width="0.75" stroke-opacity="0.45"/>
+            <path d="M24 9.5 35.5 16 24 22.5 12.5 16 24 9.5Z" fill="url(#zentra-shine-nav)"/>
+            <path d="M15.5 17h17.5l-11 7.5h11.5v5.5H15.5l11-7.5H15.5V17Z" fill="url(#zentra-grad-nav)"/>
+            <circle cx="33.5" cy="14.5" r="1.75" fill="#22d3ee"/>
+            <circle cx="33.5" cy="14.5" r="3.25" stroke="#22d3ee" stroke-opacity="0.35" stroke-width="0.75"/>
+          </svg>
+          <span class="flex flex-col justify-center leading-none">
+            <span class="text-base font-extrabold tracking-[0.14em] text-white sm:text-lg">ZENTRA</span>
+            <span class="mt-1 hidden text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-cyan-400/90 sm:block">Tecnología &amp; Seguridad</span>
+          </span>
+        </a>
+
+        <ul class="hidden lg:flex items-center justify-center gap-8" role="list">
+          <li><a href="index.html#inicio" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Inicio</a></li>
+          <li><a href="servicios.html" class="text-sm font-semibold text-cyan-400" aria-current="page">Servicios</a></li>
+          <li><a href="index.html#portafolio" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Portafolio</a></li>
+          <li><a href="index.html#contacto" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Contacto</a></li>
+        </ul>
+
+        <div class="flex items-center justify-end gap-4">
+          <a href="index.html#contacto" class="hidden sm:inline text-sm text-zinc-400 hover:text-white transition">Contacto</a>
+          <a href="#" id="nav-whatsapp" class="hidden sm:inline-flex min-h-[40px] items-center rounded-lg bg-cyan-500 px-5 py-2 text-sm font-semibold text-neutral-950 hover:bg-cyan-400 transition shadow-glow-cyan" target="_blank" rel="noopener noreferrer">Cotizar</a>
+          <button type="button" id="menu-toggle" class="lg:hidden flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-700 text-white" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menú">
+            <svg id="icon-menu-open" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="icon-menu-close" class="hidden h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+    <div id="mobile-menu" class="hidden border-t border-zinc-800 lg:hidden">
+      <ul class="space-y-1 px-4 py-4">
+        <li><a href="index.html#inicio" class="mobile-nav-link">Inicio</a></li>
+        <li><a href="servicios.html" class="mobile-nav-link">Servicios</a></li>
+        <li><a href="index.html#portafolio" class="mobile-nav-link">Portafolio</a></li>
+        <li><a href="index.html#contacto" class="mobile-nav-link">Contacto</a></li>
+        <li class="pt-2"><a href="#" id="mobile-whatsapp" class="flex h-12 items-center justify-center rounded-lg bg-cyan-500 font-semibold text-neutral-950" target="_blank" rel="noopener noreferrer">Cotizar</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero servicios -->
+    <section class="servicios-hero relative overflow-hidden pt-16" aria-labelledby="servicios-hero-heading">
+      <div class="servicios-hero__bg absolute inset-0" aria-hidden="true"></div>
+      <div class="servicios-hero__overlay absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-24">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">Servicios ZENTRA</p>
+        <h1 id="servicios-hero-heading" class="mt-4 max-w-3xl text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-[2.65rem]">
+          Soluciones integrales para tu operación en Bogotá
+        </h1>
+        <p class="mt-5 max-w-2xl text-sm leading-relaxed text-zinc-300 sm:text-base">
+          Videovigilancia CCTV, instalaciones eléctricas RETIE, soporte de cómputo e impresoras, redes certificadas y sistemas de respaldo UPS. Pasa el cursor sobre cada tarjeta para ver el detalle o abre la ficha completa.
+        </p>
+        <a href="#tarjetas" class="btn-conoce-nuevo mt-8 inline-flex min-h-[50px] min-w-[240px] items-center justify-center px-8 text-sm font-bold">
+          Conoce lo nuevo
+        </a>
+      </div>
+
+      <div class="servicios-hero__wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="h-full w-full">
+          <path fill="#ffffff" d="M0,64 C320,120 480,0 720,48 C960,96 1120,24 1440,56 L1440,120 L0,120 Z"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 5 tarjetas interactivas -->
+    <section id="tarjetas" class="servicios-panel bg-white py-14 sm:py-20" aria-labelledby="tarjetas-heading">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <h2 id="tarjetas-heading" class="sr-only">Catálogo de servicios ZENTRA</h2>
+        <p class="mb-10 text-center text-sm text-zinc-600 sm:text-base">
+          Coloca el cursor sobre una tarjeta para ver los puntos clave. En móvil, toca la tarjeta.
+        </p>
+        <div id="servicios-showcase-grid" class="servicios-nist-grid" role="list"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="border-t border-zinc-800 bg-neutral-950 py-14 sm:py-16" aria-labelledby="servicios-cta-heading">
+      <div class="mx-auto max-w-2xl px-4 text-center sm:px-6">
+        <h2 id="servicios-cta-heading" class="text-xl font-bold text-white sm:text-2xl">¿Listo para cotizar?</h2>
+        <p class="mt-3 text-sm text-zinc-400">Agenda una visita técnica sin compromiso en Bogotá y zona metropolitana.</p>
+        <a href="index.html#contacto" class="mt-8 inline-flex min-h-[52px] items-center justify-center rounded-lg bg-cyan-500 px-10 text-sm font-bold text-neutral-950 shadow-glow-cyan transition hover:bg-cyan-400">
+          Solicitar cotización
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="relative border-t border-zinc-800/80 py-10" role="contentinfo">
+    <div class="mx-auto max-w-6xl px-4 text-center">
+      <a href="index.html#inicio" class="zentra-logo mx-auto mb-4 inline-flex items-center justify-center gap-2.5 opacity-90 hover:opacity-100" aria-label="ZENTRA — Inicio">
+        <span class="text-sm font-extrabold tracking-[0.14em] text-white">ZENTRA</span>
+      </a>
+      <p class="text-xs text-zinc-500">© 2026 ZENTRA | Tecnología &amp; Seguridad — Bogotá, Colombia.</p>
+      <p class="mt-2 text-xs text-zinc-600">
+        <a href="mailto:contacto@zentra.co" id="contact-email" class="text-cyan-500/90 hover:text-cyan-400">contacto@zentra.co</a>
+        <span class="mx-2">·</span>
+        <a href="tel:+573178343978" id="contact-phone" class="hover:text-zinc-400">+57 317 834 3978</a>
+      </p>
+    </div>
+  </footer>
+
+  <div id="service-modal" class="service-modal" hidden aria-hidden="true">
+    <div class="service-modal__backdrop" data-service-modal-close tabindex="-1" aria-hidden="true"></div>
+    <div class="service-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="service-modal-title" aria-describedby="service-modal-desc">
+      <header class="service-modal__header">
+        <div class="min-w-0 flex-1 pr-2">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-500">Detalle de servicios</p>
+          <h2 id="service-modal-title" class="mt-2 text-xl font-bold text-white sm:text-2xl">Categoría</h2>
+          <p id="service-modal-desc" class="mt-2 text-sm leading-relaxed text-zinc-400"></p>
+        </div>
+        <button type="button" class="service-modal__close" data-service-modal-close aria-label="Cerrar detalle de servicios">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </header>
+      <div class="service-modal__body">
+        <div id="service-modal-mount" class="service-detail-panel" aria-live="polite"></div>
+      </div>
+      <footer class="service-modal__footer service-modal__footer--cta">
+        <button type="button" class="btn-service-detail btn-service-detail--ghost" data-service-modal-close>Cerrar</button>
+        <a href="index.html#contacto" id="service-modal-cta" class="btn-service-modal-cta" data-service-modal-close>Solicitar cotización</a>
+      </footer>
+    </div>
+  </div>
+
+  <a href="#" id="fab-whatsapp" class="fab-whatsapp fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_20px_rgba(37,211,102,0.45)] transition hover:scale-105" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="js/zentra.js" defer></script>
+</body>
+</html>

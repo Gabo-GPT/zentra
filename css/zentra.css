@@ -2,6 +2,19 @@
  * ZENTRA — Hero SOC + componentes
  */
 
+/* Imágenes del portafolio y galerías: disuaden copia casual (no bloquean pantallazos del SO) */
+.media-protected {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.media-protected img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: auto;
+}
+
 /* Secciones fuera de vista: menos trabajo de pintado y memoria GPU */
 #portafolio,
 #beneficios,
@@ -96,7 +109,7 @@
 .hero-soc__bg {
   z-index: 0;
   background-color: #050505;
-  /* background-image en index.html (ruta relativa al HTML, funciona con file://) */
+  background-image: url('../img/fondo_camara.png');
   background-size: cover;
   background-position: 68% center;
   background-repeat: no-repeat;
@@ -220,6 +233,251 @@
   }
 }
 
+/* Botón pastilla — Conoce lo nuevo (referencia PC Tecnología, adaptado ZENTRA) */
+.btn-conoce-nuevo {
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #0a0a0a;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.btn-conoce-nuevo:hover {
+  background: #f4f4f5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.btn-conoce-nuevo:focus-visible {
+  outline: 2px solid #00f2ff;
+  outline-offset: 3px;
+}
+
+/* Página servicios.html */
+.servicios-hero {
+  isolation: isolate;
+  background: #050a14;
+}
+
+.servicios-hero__bg {
+  background-image: url('../img/hero-soc-scene.png');
+  background-size: cover;
+  background-position: 68% center;
+  opacity: 0.45;
+}
+
+.servicios-hero__overlay {
+  background: linear-gradient(
+    105deg,
+    rgba(5, 10, 20, 0.95) 0%,
+    rgba(5, 10, 20, 0.88) 45%,
+    rgba(5, 10, 20, 0.55) 100%
+  );
+}
+
+.servicios-hero__wave {
+  position: relative;
+  z-index: 2;
+  margin-top: -1px;
+  height: 4.5rem;
+  line-height: 0;
+}
+
+@media (min-width: 640px) {
+  .servicios-hero__wave {
+    height: 5.5rem;
+  }
+}
+
+.servicios-panel {
+  scroll-margin-top: 5rem;
+}
+
+.servicios-nist-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  .servicios-nist-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .servicios-nist-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .servicios-nist-card:nth-child(1) {
+    grid-column: 1 / span 2;
+  }
+
+  .servicios-nist-card:nth-child(2) {
+    grid-column: 3 / span 2;
+  }
+
+  .servicios-nist-card:nth-child(3) {
+    grid-column: 5 / span 2;
+  }
+
+  .servicios-nist-card:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
+  .servicios-nist-card:nth-child(5) {
+    grid-column: 4 / span 2;
+  }
+}
+
+.servicios-nist-card {
+  position: relative;
+  min-height: 17.5rem;
+  border-radius: 1.75rem;
+  outline: none;
+  cursor: default;
+}
+
+.servicios-nist-card__inner {
+  position: relative;
+  height: 100%;
+  min-height: 17.5rem;
+  border-radius: 1.75rem;
+  overflow: hidden;
+  box-shadow: 0 14px 40px -12px rgba(15, 23, 42, 0.45);
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.servicios-nist-card:hover .servicios-nist-card__inner,
+.servicios-nist-card.is-active .servicios-nist-card__inner,
+.servicios-nist-card:focus-visible .servicios-nist-card__inner {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px -10px rgba(15, 23, 42, 0.55);
+}
+
+.servicios-nist-card__front,
+.servicios-nist-card__panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.servicios-nist-card__front {
+  position: relative;
+  z-index: 1;
+  min-height: 17.5rem;
+  background: linear-gradient(145deg, #0c1929 0%, #050a12 48%, #0a1628 100%);
+  transition: opacity 0.35s ease;
+}
+
+.servicios-nist-card__panel {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  justify-content: flex-start;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+  background: linear-gradient(160deg, #0a1628 0%, #061018 40%, #0d2137 100%);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.servicios-nist-card:hover .servicios-nist-card__panel,
+.servicios-nist-card.is-active .servicios-nist-card__panel,
+.servicios-nist-card:focus-within .servicios-nist-card__panel {
+  opacity: 1;
+  visibility: visible;
+}
+
+.servicios-nist-card:hover .servicios-nist-card__front,
+.servicios-nist-card.is-active .servicios-nist-card__front {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.servicios-nist-card__icon {
+  display: flex;
+  margin-bottom: 1.25rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.servicios-nist-card__heading {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.servicios-nist-card__tagline {
+  margin-top: 0.5rem;
+  max-width: 14rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.servicios-nist-card__panel-title {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.servicios-nist-card__list {
+  width: 100%;
+  max-width: 16rem;
+  list-style: disc;
+  padding-left: 1.25rem;
+  text-align: left;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.servicios-nist-card__list li {
+  margin-bottom: 0.35rem;
+}
+
+.servicios-nist-card__list strong {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.servicios-nist-card__more {
+  margin-top: 1.25rem;
+  width: 100%;
+  max-width: 14rem;
+  font-size: 0.8125rem;
+  min-height: 42px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .servicios-nist-card__front,
+  .servicios-nist-card__panel,
+  .servicios-nist-card__inner {
+    transition: none;
+  }
+
+  .servicios-nist-card:hover .servicios-nist-card__inner,
+  .servicios-nist-card.is-active .servicios-nist-card__inner {
+    transform: none;
+  }
+}
+
 /* Vista categoría — 3 bloques principales */
 .service-categories-grid {
   display: grid;
@@ -266,30 +524,30 @@
   justify-content: center;
   gap: 0.5rem;
   border-radius: 0.5rem;
-  border: 1px solid rgba(34, 211, 238, 0.45);
-  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid #00f2ff;
+  background: transparent;
   padding: 0.75rem 1.25rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: rgb(103 232 249);
+  color: #ffffff;
   transition:
-    background-color 0.25s ease,
-    border-color 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.2s ease;
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .btn-service-detail:hover {
-  border-color: rgba(34, 211, 238, 0.75);
-  background: rgba(34, 211, 238, 0.18);
-  color: rgb(224 242 254);
-  box-shadow: 0 0 28px -6px rgba(34, 211, 238, 0.45);
+  border-color: #00f2ff;
+  background: #00f2ff;
+  color: #000000;
+  box-shadow: 0 0 24px rgba(0, 242, 255, 0.45);
   transform: translateY(-1px);
 }
 
 .btn-service-detail:focus-visible {
-  outline: 2px solid rgb(34 211 238);
+  outline: 2px solid #00f2ff;
   outline-offset: 2px;
 }
 
@@ -696,6 +954,7 @@ html.js-service-cards .service-category-enter.is-entered {
 
   .service-modal__dialog,
   .service-modal__backdrop,
+  .portfolio-lightbox,
   .service-detail-panel.is-active {
     animation: none;
     transition: none;
@@ -704,6 +963,7 @@ html.js-service-cards .service-category-enter.is-entered {
   }
 
   .service-category-card:hover,
+  .servicios-nist-card:hover .servicios-nist-card__inner,
   .btn-service-detail:hover,
   .btn-service-modal-cta:hover,
   .service-modal-gallery__item:hover,
@@ -845,6 +1105,23 @@ html.js-service-cards .service-category-enter.is-entered {
   background: rgb(9 9 11);
 }
 
+.portfolio-carousel__media-btn {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: zoom-in;
+  text-align: inherit;
+}
+
+.portfolio-carousel__media-btn:focus-visible {
+  outline: 2px solid #00f2ff;
+  outline-offset: -2px;
+}
+
 @media (min-width: 640px) {
   .portfolio-carousel__media {
     min-height: 15rem;
@@ -954,6 +1231,125 @@ html.js-service-cards .service-category-enter.is-entered {
 .portfolio-carousel::after {
   right: 0;
   background: linear-gradient(270deg, rgb(10 10 10) 15%, transparent);
+}
+
+/* Lightbox portafolio — imagen a pantalla completa */
+.portfolio-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 65;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.portfolio-lightbox.is-open {
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+.portfolio-lightbox[hidden] {
+  display: none !important;
+}
+
+.portfolio-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 5, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.portfolio-lightbox__dialog {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  max-width: min(96vw, 72rem);
+  max-height: min(92vh, 56rem);
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-lightbox__close {
+  position: absolute;
+  top: -0.25rem;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(34, 211, 238, 0.45);
+  background: rgba(9, 9, 11, 0.92);
+  color: rgb(103 232 249);
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.portfolio-lightbox__close:hover {
+  border-color: #00f2ff;
+  background: rgba(0, 242, 255, 0.12);
+  color: #ffffff;
+}
+
+.portfolio-lightbox__close:focus-visible {
+  outline: 2px solid #00f2ff;
+  outline-offset: 2px;
+}
+
+.portfolio-lightbox__figure {
+  display: flex;
+  width: 100%;
+  max-height: min(88vh, 52rem);
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding-top: 2.5rem;
+}
+
+.portfolio-lightbox__img {
+  display: block;
+  max-width: 100%;
+  max-height: min(78vh, 48rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  box-shadow: 0 24px 64px -16px rgba(0, 0, 0, 0.75);
+}
+
+.portfolio-lightbox__caption {
+  margin-top: 1rem;
+  max-width: 36rem;
+  text-align: center;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: rgb(250 250 250);
+}
+
+@media (min-width: 640px) {
+  .portfolio-lightbox {
+    padding: 1.5rem;
+  }
+
+  .portfolio-lightbox__close {
+    top: -0.5rem;
+    right: -0.5rem;
+  }
 }
 
 .benefit-panel {

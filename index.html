@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="ZENTRA — Videovigilancia CCTV, cámaras IP y análogas, reparación de impresoras en Bogotá.">
   <meta name="theme-color" content="#0a0a0a">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
   <title>ZENTRA | Tecnología &amp; Seguridad</title>
   <link rel="icon" href="img/logo-icon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="img/hero-soc-scene.png" as="image" fetchpriority="high">
+  <link rel="preload" href="img/fondo_camara.png" as="image" fetchpriority="high">
   <link rel="preload" href="css/tailwind.min.css" as="style">
   <link rel="preload" href="css/zentra.css" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -51,7 +54,7 @@
 
         <ul class="hidden lg:flex items-center justify-center gap-8 xl:gap-10" role="list">
           <li><a href="#inicio" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Inicio</a></li>
-          <li><a href="#servicios" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Servicios</a></li>
+          <li><a href="servicios.html" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Servicios</a></li>
           <li><a href="#portafolio" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Portafolio</a></li>
           <li><a href="#beneficios" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Por qué ZENTRA</a></li>
           <li><a href="#contacto" class="text-sm text-zinc-300 hover:text-cyan-400 transition">Contacto</a></li>
@@ -70,7 +73,7 @@
     <div id="mobile-menu" class="hidden border-t border-zinc-800 lg:hidden">
       <ul class="space-y-1 px-4 py-4">
         <li><a href="#inicio" class="mobile-nav-link">Inicio</a></li>
-        <li><a href="#servicios" class="mobile-nav-link">Servicios</a></li>
+        <li><a href="servicios.html" class="mobile-nav-link">Servicios</a></li>
         <li><a href="#portafolio" class="mobile-nav-link">Portafolio</a></li>
         <li><a href="#beneficios" class="mobile-nav-link">Por qué ZENTRA</a></li>
         <li><a href="#contacto" class="mobile-nav-link">Contacto</a></li>
@@ -83,8 +86,8 @@
 
     <!-- HERO SOC — fondo operaciones + collage dispositivos (como mockup) -->
     <section id="inicio" class="hero-soc relative flex min-h-[100svh] flex-col overflow-hidden pt-16" aria-labelledby="hero-heading">
-      <!-- Escena SOC: img/hero-soc-scene.png (centro de operaciones, globo holográfico, dispositivos) -->
-      <div class="hero-soc__bg absolute inset-0" style="background-image: url('img/hero-soc-scene.png');" role="img" aria-label="Centro de operaciones de seguridad ZENTRA"></div>
+      <!-- Presentación: img/fondo_camara.png -->
+      <div class="hero-soc__bg absolute inset-0" role="img" aria-label="Presentación ZENTRA — videovigilancia y tecnología de confianza"></div>
       <!-- Gradiente izquierdo para legibilidad del texto -->
       <div class="hero-soc__overlay absolute inset-0 pointer-events-none" aria-hidden="true"></div>
       <div class="hero-soc__glow absolute bottom-0 left-1/2 h-32 w-[80%] -translate-x-1/2 bg-cyan-500/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
@@ -108,18 +111,11 @@
               Instalamos sistemas de videovigilancia CCTV y damos soporte técnico a impresoras para que tu operación siga segura y sin interrupciones.
             </p>
 
-            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div class="mt-8">
               <a
-                href="#"
-                id="hero-whatsapp"
-                class="inline-flex min-h-[50px] w-full items-center justify-center rounded-lg bg-cyan-500 px-8 text-sm font-semibold text-neutral-950 shadow-glow-cyan transition hover:bg-cyan-400 sm:w-auto sm:min-w-[200px]"
-                target="_blank"
-                rel="noopener noreferrer"
-              >Protege tu negocio</a>
-              <a
-                href="#contacto"
-                class="inline-flex min-h-[50px] w-full items-center justify-center rounded-lg border border-white/35 bg-white/5 px-8 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-cyan-400/50 hover:bg-white/10 sm:w-auto"
-              >Cotiza con confianza</a>
+                href="servicios.html"
+                class="btn-conoce-nuevo inline-flex min-h-[50px] w-full items-center justify-center px-8 text-sm font-bold sm:w-auto sm:min-w-[240px]"
+              >Conoce lo nuevo</a>
             </div>
           </div>
 
@@ -175,7 +171,6 @@
           </p>
         </header>
 
-        <!-- Vista categoría: 3 bloques principales -->
         <div id="servicios-grid" class="service-categories-grid mt-12 sm:mt-14" role="list">
           <article class="service-category-card service-category-enter reveal-on-scroll flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-8" role="listitem">
             <div class="service-category-card__icon mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-400" aria-hidden="true">
@@ -236,50 +231,62 @@
           <ul class="portfolio-carousel__track" role="list">
             <li class="portfolio-carousel__card" role="listitem">
               <article class="portfolio-carousel__card-inner">
-                <div class="portfolio-carousel__media">
-                  <img src="img/rack_cableado.png" alt="" loading="lazy" decoding="async" width="640" height="400">
+                <div class="portfolio-carousel__media media-protected">
+                  <button type="button" class="portfolio-carousel__media-btn" data-portfolio-zoom aria-label="Ver imagen completa: Tablero eléctrico empresarial">
+                    <img src="img/carrusel/tablero.png" alt="Tablero eléctrico empresarial instalado por ZENTRA" loading="lazy" decoding="async" width="640" height="400" draggable="false">
+                  </button>
                 </div>
-                <h3 class="portfolio-carousel__title">Cableado estructurado en rack</h3>
+                <h3 class="portfolio-carousel__title">Tablero eléctrico empresarial</h3>
               </article>
             </li>
             <li class="portfolio-carousel__card" role="listitem">
               <article class="portfolio-carousel__card-inner">
-                <div class="portfolio-carousel__media">
-                  <img src="img/mantenimiento_equipos_computo.png" alt="" loading="lazy" decoding="async" width="640" height="400">
+                <div class="portfolio-carousel__media media-protected">
+                  <button type="button" class="portfolio-carousel__media-btn" data-portfolio-zoom aria-label="Ver imagen completa: Transferencias eléctricas">
+                    <img src="img/carrusel/transferencias_electricas.png" alt="Transferencias eléctricas y distribución de energía" loading="lazy" decoding="async" width="640" height="400" draggable="false">
+                  </button>
                 </div>
-                <h3 class="portfolio-carousel__title">Mantenimiento de equipos de cómputo</h3>
+                <h3 class="portfolio-carousel__title">Transferencias eléctricas</h3>
               </article>
             </li>
             <li class="portfolio-carousel__card" role="listitem">
               <article class="portfolio-carousel__card-inner">
-                <div class="portfolio-carousel__media">
-                  <img src="img/soc_dvr.png" alt="" loading="lazy" decoding="async" width="640" height="400">
+                <div class="portfolio-carousel__media media-protected">
+                  <button type="button" class="portfolio-carousel__media-btn" data-portfolio-zoom aria-label="Ver imagen completa: Sistemas de respaldo en baterías">
+                    <img src="img/carrusel/baterias.png" alt="Sistema de respaldo con baterías" loading="lazy" decoding="async" width="640" height="400" draggable="false">
+                  </button>
                 </div>
-                <h3 class="portfolio-carousel__title">Centro de monitoreo CCTV</h3>
+                <h3 class="portfolio-carousel__title">Sistemas de respaldo en baterías</h3>
               </article>
             </li>
             <li class="portfolio-carousel__card" role="listitem">
               <article class="portfolio-carousel__card-inner">
-                <div class="portfolio-carousel__media">
-                  <img src="img/camaras_exterior.png" alt="" loading="lazy" decoding="async" width="640" height="400">
+                <div class="portfolio-carousel__media media-protected">
+                  <button type="button" class="portfolio-carousel__media-btn" data-portfolio-zoom aria-label="Ver imagen completa: Banco de baterías">
+                    <img src="img/carrusel/banco_de_bater%C3%ADas.png" alt="Banco de baterías para continuidad operativa" loading="lazy" decoding="async" width="640" height="400" draggable="false">
+                  </button>
                 </div>
-                <h3 class="portfolio-carousel__title">Cámaras de seguridad en exterior</h3>
+                <h3 class="portfolio-carousel__title">Banco de baterías</h3>
               </article>
             </li>
             <li class="portfolio-carousel__card" role="listitem">
               <article class="portfolio-carousel__card-inner">
-                <div class="portfolio-carousel__media">
-                  <img src="img/servicio-videovigilancia.png" alt="" loading="lazy" decoding="async" width="640" height="400">
+                <div class="portfolio-carousel__media media-protected">
+                  <button type="button" class="portfolio-carousel__media-btn" data-portfolio-zoom aria-label="Ver imagen completa: Instalación de luminaria">
+                    <img src="img/carrusel/iluminaria.png" alt="Instalación de luminaria empresarial" loading="lazy" decoding="async" width="640" height="400" draggable="false">
+                  </button>
                 </div>
-                <h3 class="portfolio-carousel__title">Videovigilancia IP empresarial</h3>
+                <h3 class="portfolio-carousel__title">Instalación de luminaria</h3>
               </article>
             </li>
             <li class="portfolio-carousel__card" role="listitem">
               <article class="portfolio-carousel__card-inner">
-                <div class="portfolio-carousel__media">
-                  <img src="img/servicio-impresoras.png" alt="" loading="lazy" decoding="async" width="640" height="400">
+                <div class="portfolio-carousel__media media-protected">
+                  <button type="button" class="portfolio-carousel__media-btn" data-portfolio-zoom aria-label="Ver imagen completa: Sistemas de iluminación">
+                    <img src="img/carrusel/iluminaria2.png" alt="Sistema de iluminación en proyecto ZENTRA" loading="lazy" decoding="async" width="640" height="400" draggable="false">
+                  </button>
                 </div>
-                <h3 class="portfolio-carousel__title">Soporte técnico de impresión</h3>
+                <h3 class="portfolio-carousel__title">Sistemas de iluminación</h3>
               </article>
             </li>
           </ul>
@@ -432,6 +439,25 @@
       <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 7.4H22l-6 4.6 2.3 7-6.3-4.6L5.7 19l2.3-7-6-4.6h7.6z"/></svg>
     </div>
   </footer>
+
+  <!-- Lightbox: imagen completa del portafolio -->
+  <div id="portfolio-lightbox" class="portfolio-lightbox" hidden aria-hidden="true">
+    <div class="portfolio-lightbox__backdrop" data-portfolio-lightbox-close tabindex="-1" aria-hidden="true"></div>
+    <div
+      class="portfolio-lightbox__dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="portfolio-lightbox-caption"
+    >
+      <button type="button" class="portfolio-lightbox__close" data-portfolio-lightbox-close aria-label="Cerrar imagen">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <figure class="portfolio-lightbox__figure media-protected">
+        <img id="portfolio-lightbox-img" class="portfolio-lightbox__img" src="" alt="" decoding="async" draggable="false">
+        <figcaption id="portfolio-lightbox-caption" class="portfolio-lightbox__caption"></figcaption>
+      </figure>
+    </div>
+  </div>
 
   <!-- Modal: detalle de servicios por categoría -->
   <div id="service-modal" class="service-modal" hidden aria-hidden="true">
