@@ -381,6 +381,80 @@ function initMobileMenu(onEscape) {
   };
 }
 
+function initPortfolioCarousel() {
+  const root = document.querySelector('[data-portfolio-carousel]');
+  const viewport = root?.querySelector('.portfolio-carousel__viewport');
+  const track = root?.querySelector('.portfolio-carousel__track');
+  const prevBtn = root?.querySelector('.portfolio-carousel__btn--prev');
+  const nextBtn = root?.querySelector('.portfolio-carousel__btn--next');
+
+  if (!root || !viewport || !track) return;
+
+  const getScrollStep = () => {
+    const card = track.querySelector('.portfolio-carousel__card');
+    if (!card) return viewport.clientWidth * 0.85;
+    const gap = Number.parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 16;
+    return card.offsetWidth + gap;
+  };
+
+  const updateButtons = () => {
+    const maxScroll = viewport.scrollWidth - viewport.clientWidth - 4;
+    if (prevBtn) prevBtn.disabled = viewport.scrollLeft <= 4;
+    if (nextBtn) nextBtn.disabled = viewport.scrollLeft >= maxScroll;
+  };
+
+  const scrollByStep = (direction) => {
+    viewport.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
+  };
+
+  prevBtn?.addEventListener('click', () => scrollByStep(-1));
+  nextBtn?.addEventListener('click', () => scrollByStep(1));
+
+  viewport.addEventListener('scroll', updateButtons, { passive: true });
+  window.addEventListener('resize', updateButtons, { passive: true });
+
+  viewport.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      scrollByStep(-1);
+    }
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      scrollByStep(1);
+    }
+  });
+
+  let isDragging = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+
+  viewport.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    isDragging = true;
+    startX = e.clientX;
+    startScrollLeft = viewport.scrollLeft;
+    viewport.classList.add('is-dragging');
+    viewport.setPointerCapture?.(e.pointerId);
+  });
+
+  viewport.addEventListener('pointermove', (e) => {
+    if (!isDragging) return;
+    viewport.scrollLeft = startScrollLeft - (e.clientX - startX);
+  });
+
+  const endDrag = () => {
+    if (!isDragging) return;
+    isDragging = false;
+    viewport.classList.remove('is-dragging');
+    updateButtons();
+  };
+
+  viewport.addEventListener('pointerup', endDrag);
+  viewport.addEventListener('pointercancel', endDrag);
+
+  updateButtons();
+}
+
 function initHeaderScroll() {
   const header = $('site-header');
   const hero = $('inicio');
@@ -431,6 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   initHeaderScroll();
+  initPortfolioCarousel();
 
   const hash = window.location.hash.slice(1);
   if (SERVICE_CATEGORIES[hash]) modalApi?.openModal(hash);

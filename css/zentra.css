@@ -707,7 +707,10 @@ html.js-service-cards .service-category-enter.is-entered {
   .btn-service-detail:hover,
   .btn-service-modal-cta:hover,
   .service-modal-gallery__item:hover,
-  .service-modal-gallery__item:hover .service-modal-gallery__img {
+  .service-modal-gallery__item:hover .service-modal-gallery__img,
+  .portfolio-carousel__card-inner:hover,
+  .portfolio-carousel__card-inner:hover .portfolio-carousel__media img,
+  .portfolio-carousel__btn:hover:not(:disabled) {
     transform: none;
   }
 }
@@ -748,14 +751,196 @@ html.js-service-cards .service-category-enter.is-entered {
   transform: scale(1.04);
 }
 
-.portfolio-frame {
-  border: 1px solid rgba(34, 211, 238, 0.35);
-  background: rgb(24 24 27);
+/* Carrusel portafolio — estilo Netflix */
+.portfolio-carousel {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 72rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 }
 
-.portfolio-frame:hover {
-  border-color: rgba(34, 211, 238, 0.65);
-  box-shadow: 0 0 24px -8px rgba(6, 182, 212, 0.25);
+.portfolio-carousel__viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  cursor: grab;
+  touch-action: pan-x;
+  padding: 0.5rem 0 1.25rem;
+}
+
+.portfolio-carousel__viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.portfolio-carousel__viewport.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  user-select: none;
+}
+
+.portfolio-carousel__track {
+  display: flex;
+  gap: 1rem;
+  padding-left: max(1rem, calc((100% - 72rem) / 2 + 1rem));
+  padding-right: max(1rem, calc((100% - 72rem) / 2 + 1rem));
+}
+
+@media (min-width: 640px) {
+  .portfolio-carousel__track {
+    gap: 1.25rem;
+  }
+}
+
+.portfolio-carousel__card {
+  flex: 0 0 min(88vw, 22rem);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .portfolio-carousel__card {
+    flex: 0 0 min(72vw, 26rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .portfolio-carousel__card {
+    flex: 0 0 calc(42% - 0.625rem);
+    max-width: 22rem;
+  }
+}
+
+.portfolio-carousel__card-inner {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  background: rgb(24 24 27);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portfolio-carousel__card-inner:hover {
+  border-color: rgba(34, 211, 238, 0.7);
+  box-shadow:
+    0 0 0 1px rgba(34, 211, 238, 0.12),
+    0 16px 40px -12px rgba(6, 182, 212, 0.35);
+  transform: scale(1.03);
+}
+
+.portfolio-carousel__media {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: rgb(9 9 11);
+}
+
+.portfolio-carousel__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portfolio-carousel__card-inner:hover .portfolio-carousel__media img {
+  transform: scale(1.08);
+}
+
+.portfolio-carousel__title {
+  padding: 0.875rem 1.125rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: rgb(250 250 250);
+}
+
+.portfolio-carousel__btn {
+  position: absolute;
+  top: 42%;
+  z-index: 2;
+  display: flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(34, 211, 238, 0.45);
+  background: rgba(9, 9, 11, 0.92);
+  color: rgb(103 232 249);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.portfolio-carousel__btn:hover:not(:disabled) {
+  border-color: rgba(34, 211, 238, 0.75);
+  background: rgba(34, 211, 238, 0.12);
+  color: rgb(224 242 254);
+  transform: scale(1.06);
+}
+
+.portfolio-carousel__btn:focus-visible {
+  outline: 2px solid rgb(34 211 238);
+  outline-offset: 2px;
+}
+
+.portfolio-carousel__btn:disabled {
+  cursor: default;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.portfolio-carousel__btn--prev {
+  left: 0.5rem;
+}
+
+.portfolio-carousel__btn--next {
+  right: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  .portfolio-carousel__btn--prev {
+    left: 0.75rem;
+  }
+
+  .portfolio-carousel__btn--next {
+    right: 0.75rem;
+  }
+}
+
+.portfolio-carousel::before,
+.portfolio-carousel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: clamp(1.5rem, 6vw, 4rem);
+  height: 85%;
+  pointer-events: none;
+}
+
+.portfolio-carousel::before {
+  left: 0;
+  background: linear-gradient(90deg, rgb(10 10 10) 15%, transparent);
+}
+
+.portfolio-carousel::after {
+  right: 0;
+  background: linear-gradient(270deg, rgb(10 10 10) 15%, transparent);
 }
 
 .benefit-panel {

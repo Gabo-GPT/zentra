@@ -279,29 +279,75 @@
       </div>
     </section>
 
-    <!-- PORTAFOLIO 2×2 -->
+    <!-- PORTAFOLIO — carrusel horizontal -->
     <section id="portafolio" class="py-16 sm:py-20" aria-labelledby="portafolio-heading">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 id="portafolio-heading" class="reveal-on-scroll text-center text-xl font-bold uppercase tracking-wide text-white sm:text-2xl">
           Proyectos con el <span class="text-cyan-400">sello ZENTRA</span>
         </h2>
+      </div>
 
-        <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
-          <figure class="portfolio-frame reveal-on-scroll group overflow-hidden rounded-xl">
-            <img src="img/rack_cableado.png" alt="Rack con cableado estructurado" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" width="600" height="450">
-          </figure>
-          <figure class="portfolio-frame reveal-on-scroll reveal-delay-1 group overflow-hidden rounded-xl">
-            <img src="img/mantenimiento_equipos_computo.png" alt="Mantenimiento de equipos de cómputo" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" width="600" height="450">
-            <figcaption class="sr-only">Mantenimiento de equipos de cómputo</figcaption>
-          </figure>
-          <figure class="portfolio-frame reveal-on-scroll reveal-delay-2 group overflow-hidden rounded-xl">
-            <img src="img/soc_dvr.png" alt="Centro de monitoreo CCTV" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" width="600" height="450">
-          </figure>
-          <figure class="portfolio-frame reveal-on-scroll reveal-delay-3 group overflow-hidden rounded-xl">
-            <img src="img/camaras_exterior.png" alt="Instalación de cámaras de seguridad en exterior" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" width="600" height="450">
-            <figcaption class="sr-only">Cámaras en exterior</figcaption>
-          </figure>
+      <div class="portfolio-carousel reveal-on-scroll mt-10" data-portfolio-carousel>
+        <button type="button" class="portfolio-carousel__btn portfolio-carousel__btn--prev" aria-label="Ver proyectos anteriores" disabled>
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+
+        <div class="portfolio-carousel__viewport" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Proyectos destacados ZENTRA">
+          <ul class="portfolio-carousel__track" role="list">
+            <li class="portfolio-carousel__card" role="listitem">
+              <article class="portfolio-carousel__card-inner">
+                <div class="portfolio-carousel__media">
+                  <img src="img/rack_cableado.png" alt="" loading="lazy" decoding="async" width="640" height="400">
+                </div>
+                <h3 class="portfolio-carousel__title">Cableado estructurado en rack</h3>
+              </article>
+            </li>
+            <li class="portfolio-carousel__card" role="listitem">
+              <article class="portfolio-carousel__card-inner">
+                <div class="portfolio-carousel__media">
+                  <img src="img/mantenimiento_equipos_computo.png" alt="" loading="lazy" decoding="async" width="640" height="400">
+                </div>
+                <h3 class="portfolio-carousel__title">Mantenimiento de equipos de cómputo</h3>
+              </article>
+            </li>
+            <li class="portfolio-carousel__card" role="listitem">
+              <article class="portfolio-carousel__card-inner">
+                <div class="portfolio-carousel__media">
+                  <img src="img/soc_dvr.png" alt="" loading="lazy" decoding="async" width="640" height="400">
+                </div>
+                <h3 class="portfolio-carousel__title">Centro de monitoreo CCTV</h3>
+              </article>
+            </li>
+            <li class="portfolio-carousel__card" role="listitem">
+              <article class="portfolio-carousel__card-inner">
+                <div class="portfolio-carousel__media">
+                  <img src="img/camaras_exterior.png" alt="" loading="lazy" decoding="async" width="640" height="400">
+                </div>
+                <h3 class="portfolio-carousel__title">Cámaras de seguridad en exterior</h3>
+              </article>
+            </li>
+            <li class="portfolio-carousel__card" role="listitem">
+              <article class="portfolio-carousel__card-inner">
+                <div class="portfolio-carousel__media">
+                  <img src="img/servicio-videovigilancia.png" alt="" loading="lazy" decoding="async" width="640" height="400">
+                </div>
+                <h3 class="portfolio-carousel__title">Videovigilancia IP empresarial</h3>
+              </article>
+            </li>
+            <li class="portfolio-carousel__card" role="listitem">
+              <article class="portfolio-carousel__card-inner">
+                <div class="portfolio-carousel__media">
+                  <img src="img/servicio-impresoras.png" alt="" loading="lazy" decoding="async" width="640" height="400">
+                </div>
+                <h3 class="portfolio-carousel__title">Soporte técnico de impresión</h3>
+              </article>
+            </li>
+          </ul>
         </div>
+
+        <button type="button" class="portfolio-carousel__btn portfolio-carousel__btn--next" aria-label="Ver más proyectos">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
       </div>
     </section>
 
