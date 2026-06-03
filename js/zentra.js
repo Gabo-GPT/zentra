@@ -90,9 +90,112 @@ function initContactForm() {
 /* =============================================================================
    Tarjetas de servicios — entrada suave al cargar / al entrar en vista
    ============================================================================= */
+const SERVICE_CATEGORIES = {
+  soporte: {
+    title: 'Soporte Técnico',
+    description: 'Mantenimiento de equipos de cómputo e impresoras para oficinas y PYMES.',
+  },
+  redes: {
+    title: 'Infraestructura de Redes',
+    description: 'GPON, P2P, LAN y WAN: conectividad diseñada e implementada con estándares profesionales.',
+  },
+  electricas: {
+    title: 'Instalaciones Eléctricas',
+    description: 'Proyectos eléctricos residenciales, empresariales e industriales bajo normativa RETIE.',
+  },
+};
+
+/* =============================================================================
+   Modal categoría → detalle de servicios
+   ============================================================================= */
+function initServiceCategoryModal() {
+  const modal = document.getElementById('service-modal');
+  const titleEl = document.getElementById('service-modal-title');
+  const descEl = document.getElementById('service-modal-desc');
+  const panels = modal?.querySelectorAll('[data-service-panel]');
+  const triggers = document.querySelectorAll('[data-service-category]');
+  const closeEls = modal?.querySelectorAll('[data-service-modal-close]');
+
+  if (!modal || !titleEl || !descEl || !panels?.length || !triggers.length) return;
+
+  let lastFocused = null;
+
+  const showPanel = (category) => {
+    const meta = SERVICE_CATEGORIES[category];
+    if (!meta) return;
+
+    titleEl.textContent = meta.title;
+    descEl.textContent = meta.description;
+
+    panels.forEach((panel) => {
+      const isActive = panel.dataset.servicePanel === category;
+      panel.hidden = !isActive;
+      panel.classList.toggle('is-active', isActive);
+    });
+  };
+
+  const openModal = (category, trigger) => {
+    const meta = SERVICE_CATEGORIES[category];
+    if (!meta) return;
+
+    lastFocused = trigger || document.activeElement;
+    showPanel(category);
+
+    modal.removeAttribute('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('overflow-hidden');
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => modal.classList.add('is-open'));
+    });
+
+    const closeBtn = modal.querySelector('.service-modal__close');
+    closeBtn?.focus();
+  };
+
+  const closeModal = () => {
+    if (!modal.classList.contains('is-open')) return;
+
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('overflow-hidden');
+    panels.forEach((panel) => panel.classList.remove('is-active'));
+
+    window.setTimeout(() => {
+      if (!modal.classList.contains('is-open')) {
+        modal.setAttribute('hidden', '');
+      }
+    }, 420);
+
+    if (lastFocused && typeof lastFocused.focus === 'function') {
+      lastFocused.focus();
+    }
+  };
+
+  triggers.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      openModal(btn.dataset.serviceCategory, btn);
+    });
+  });
+
+  closeEls?.forEach((el) => {
+    el.addEventListener('click', closeModal);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+
+  const hash = window.location.hash.replace('#', '');
+  if (SERVICE_CATEGORIES[hash]) {
+    openModal(hash);
+  }
+}
+
 function initServiceCardsEntrance() {
   const grid = document.getElementById('servicios-grid');
-  const cards = grid?.querySelectorAll('.service-card-enter');
+  const cards = grid?.querySelectorAll('.service-category-enter');
   if (!grid || !cards?.length) return;
 
   document.documentElement.classList.add('js-service-cards');
@@ -242,6 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
   applyContactInfo();
   initContactForm();
   initServiceCardsEntrance();
+  initServiceCategoryModal();
   initScrollReveal();
   initMobileMenu();
   initHeaderScroll();
