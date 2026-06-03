@@ -156,10 +156,10 @@ const SERVICE_CATEGORIES = {
       { title: 'Proyectos industriales', text: 'Media y baja tensión, tableros de control y mantenimiento en planta.' },
     ],
     gallery: [
-      { src: 'img/carrusel/tablero.png', alt: 'Tablero eléctrico empresarial instalado por ZENTRA' },
-      { src: 'img/carrusel/transferencias_electricas.png', alt: 'Transferencias eléctricas y distribución de energía' },
+      { src: 'img/carrusel/tablero.png', alt: 'Transferencia electrica instalada por ZENTRA' },
+      { src: 'img/carrusel/transferencias_electricas.png', alt: 'Tablero control de iluminacion instalado por ZENTRA' },
       { src: 'img/carrusel/baterias.png', alt: 'Sistema de respaldo con baterías' },
-      { src: 'img/carrusel/banco_de_baterías.png', alt: 'Banco de baterías para continuidad operativa' },
+      { src: 'img/carrusel/banco_de_baterías.png', alt: 'Banco de condesnadores instalado por ZENTRA' },
     ],
     guarantees: [
       'Cumplimiento normativo RETIE',
@@ -180,9 +180,9 @@ const SERVICE_CATEGORIES = {
     ],
     gallery: [
       { src: 'img/carrusel/baterias.png', alt: 'Sistema de respaldo con baterías' },
-      { src: 'img/carrusel/banco_de_baterías.png', alt: 'Banco de baterías para continuidad operativa' },
-      { src: 'img/carrusel/transferencias_electricas.png', alt: 'Transferencias eléctricas' },
-      { src: 'img/carrusel/tablero.png', alt: 'Tablero eléctrico empresarial' },
+      { src: 'img/carrusel/banco_de_baterías.png', alt: 'Banco de condesnadores instalado por ZENTRA' },
+      { src: 'img/carrusel/transferencias_electricas.png', alt: 'Tablero control de iluminacion' },
+      { src: 'img/carrusel/tablero.png', alt: 'Transferencia electrica' },
     ],
     guarantees: [
       'Cálculo de autonomía documentado',
