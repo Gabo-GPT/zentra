@@ -88,6 +88,54 @@ function initContactForm() {
 }
 
 /* =============================================================================
+   Tarjetas de servicios — entrada suave al cargar / al entrar en vista
+   ============================================================================= */
+function initServiceCardsEntrance() {
+  const grid = document.getElementById('servicios-grid');
+  const cards = grid?.querySelectorAll('.service-card-enter');
+  if (!grid || !cards?.length) return;
+
+  document.documentElement.classList.add('js-service-cards');
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const playEntrance = () => {
+    cards.forEach((card, index) => {
+      card.style.transitionDelay = `${index * 0.07}s`;
+      card.classList.add('is-entered');
+    });
+  };
+
+  if (reducedMotion) {
+    playEntrance();
+    return;
+  }
+
+  const runOnce = () => {
+    requestAnimationFrame(playEntrance);
+  };
+
+  const rect = grid.getBoundingClientRect();
+  const inView = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+
+  if (inView) {
+    runOnce();
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      runOnce();
+      obs.disconnect();
+    },
+    { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.1 }
+  );
+
+  observer.observe(grid);
+}
+
+/* =============================================================================
    Scroll reveal — IntersectionObserver
    ============================================================================= */
 function initScrollReveal() {
@@ -193,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
   applyWhatsAppLinks();
   applyContactInfo();
   initContactForm();
+  initServiceCardsEntrance();
   initScrollReveal();
   initMobileMenu();
   initHeaderScroll();
