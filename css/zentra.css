@@ -2,6 +2,14 @@
  * ZENTRA — Hero SOC + componentes
  */
 
+/* Secciones fuera de vista: menos trabajo de pintado y memoria GPU */
+#portafolio,
+#beneficios,
+#contacto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
+}
+
 /* Logo ZENTRA */
 .zentra-logo__icon {
   filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.28));
@@ -305,7 +313,7 @@ html.js-service-cards .service-category-enter {
   transition:
     opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
+  transition-delay: var(--enter-delay, 0s);
 }
 
 html.js-service-cards .service-category-enter.is-entered {
@@ -816,7 +824,6 @@ html.js-reveal .reveal-on-scroll {
   transition:
     opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
 }
 
 html.js-reveal .reveal-on-scroll.is-visible {
