@@ -799,7 +799,7 @@ html.js-service-cards .service-category-enter.is-entered {
 }
 
 .portfolio-carousel__card {
-  flex: 0 0 min(88vw, 22rem);
+  flex: 0 0 min(92vw, 30rem);
   scroll-snap-align: start;
   scroll-snap-stop: always;
   list-style: none;
@@ -807,14 +807,14 @@ html.js-service-cards .service-category-enter.is-entered {
 
 @media (min-width: 640px) {
   .portfolio-carousel__card {
-    flex: 0 0 min(72vw, 26rem);
+    flex: 0 0 min(82vw, 34rem);
   }
 }
 
 @media (min-width: 1024px) {
   .portfolio-carousel__card {
-    flex: 0 0 calc(42% - 0.625rem);
-    max-width: 22rem;
+    flex: 0 0 calc(52% - 0.625rem);
+    max-width: 32rem;
   }
 }
 
@@ -839,9 +839,22 @@ html.js-service-cards .service-category-enter.is-entered {
 }
 
 .portfolio-carousel__media {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
+  min-height: 12.5rem;
   overflow: hidden;
   background: rgb(9 9 11);
+}
+
+@media (min-width: 640px) {
+  .portfolio-carousel__media {
+    min-height: 15rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .portfolio-carousel__media {
+    min-height: 17.5rem;
+  }
 }
 
 .portfolio-carousel__media img {
@@ -866,7 +879,7 @@ html.js-service-cards .service-category-enter.is-entered {
 
 .portfolio-carousel__btn {
   position: absolute;
-  top: 42%;
+  top: 46%;
   z-index: 2;
   display: flex;
   height: 2.75rem;

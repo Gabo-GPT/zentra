@@ -390,6 +390,13 @@ function initPortfolioCarousel() {
 
   if (!root || !viewport || !track) return;
 
+  const AUTOPLAY_MS = 4500;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let autoplayId = null;
+  let isDragging = false;
+  let isPaused = false;
+  let isVisible = true;
+
   const getScrollStep = () => {
     const card = track.querySelector('.portfolio-carousel__card');
     if (!card) return viewport.clientWidth * 0.85;
@@ -407,8 +414,41 @@ function initPortfolioCarousel() {
     viewport.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
   };
 
-  prevBtn?.addEventListener('click', () => scrollByStep(-1));
-  nextBtn?.addEventListener('click', () => scrollByStep(1));
+  const advanceAutoplay = () => {
+    if (isPaused || isDragging || !isVisible || reducedMotion) return;
+    const maxScroll = viewport.scrollWidth - viewport.clientWidth - 4;
+    if (viewport.scrollLeft >= maxScroll) {
+      viewport.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      scrollByStep(1);
+    }
+    updateButtons();
+  };
+
+  const stopAutoplay = () => {
+    if (autoplayId) window.clearInterval(autoplayId);
+    autoplayId = null;
+  };
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    if (reducedMotion || isPaused || !isVisible) return;
+    autoplayId = window.setInterval(advanceAutoplay, AUTOPLAY_MS);
+  };
+
+  const resetAutoplay = () => {
+    stopAutoplay();
+    startAutoplay();
+  };
+
+  prevBtn?.addEventListener('click', () => {
+    scrollByStep(-1);
+    resetAutoplay();
+  });
+  nextBtn?.addEventListener('click', () => {
+    scrollByStep(1);
+    resetAutoplay();
+  });
 
   viewport.addEventListener('scroll', updateButtons, { passive: true });
   window.addEventListener('resize', updateButtons, { passive: true });
@@ -417,20 +457,22 @@ function initPortfolioCarousel() {
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
       scrollByStep(-1);
+      resetAutoplay();
     }
     if (e.key === 'ArrowRight') {
       e.preventDefault();
       scrollByStep(1);
+      resetAutoplay();
     }
   });
 
-  let isDragging = false;
   let startX = 0;
   let startScrollLeft = 0;
 
   viewport.addEventListener('pointerdown', (e) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     isDragging = true;
+    stopAutoplay();
     startX = e.clientX;
     startScrollLeft = viewport.scrollLeft;
     viewport.classList.add('is-dragging');
@@ -447,12 +489,42 @@ function initPortfolioCarousel() {
     isDragging = false;
     viewport.classList.remove('is-dragging');
     updateButtons();
+    resetAutoplay();
   };
 
   viewport.addEventListener('pointerup', endDrag);
   viewport.addEventListener('pointercancel', endDrag);
 
+  root.addEventListener('mouseenter', () => {
+    isPaused = true;
+    stopAutoplay();
+  });
+  root.addEventListener('mouseleave', () => {
+    isPaused = false;
+    startAutoplay();
+  });
+  root.addEventListener('focusin', stopAutoplay);
+  root.addEventListener('focusout', () => {
+    if (!root.contains(document.activeElement)) startAutoplay();
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAutoplay();
+    else startAutoplay();
+  });
+
+  const visObs = new IntersectionObserver(
+    (entries) => {
+      isVisible = entries[0]?.isIntersecting ?? true;
+      if (isVisible) startAutoplay();
+      else stopAutoplay();
+    },
+    { threshold: 0.25 }
+  );
+  visObs.observe(root);
+
   updateButtons();
+  startAutoplay();
 }
 
 function initHeaderScroll() {
