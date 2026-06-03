@@ -90,20 +90,159 @@ function initContactForm() {
 /* =============================================================================
    Tarjetas de servicios — entrada suave al cargar / al entrar en vista
    ============================================================================= */
+const SERVICE_CHECK_ICON =
+  '<svg class="service-modal-guarantees__icon h-4 w-4 shrink-0 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>';
+
 const SERVICE_CATEGORIES = {
   soporte: {
     title: 'Soporte Técnico',
-    description: 'Mantenimiento de equipos de cómputo e impresoras para oficinas y PYMES.',
+    description: 'Continuidad operativa para tu parque tecnológico con respuesta ágil en Bogotá.',
+    context:
+      'Aplicamos protocolos de mantenimiento documentados, repuestos de calidad y configuración en red alineada a buenas prácticas. Tu infraestructura de cómputo e impresión queda estable, trazable y lista para el día a día de la oficina.',
+    services: [
+      {
+        title: 'Mantenimiento de equipos de cómputo',
+        text: 'Preventivo y correctivo para PCs, portátiles y estaciones de trabajo.',
+      },
+      {
+        title: 'Mantenimiento de impresoras',
+        text: 'Láser e inyección: diagnóstico, repuestos y configuración en red.',
+      },
+    ],
+    gallery: [
+      { src: 'img/mantenimiento_equipos_computo.png', alt: 'Mantenimiento de equipos de cómputo en sitio' },
+      { src: 'img/servicio-impresoras.png', alt: 'Servicio técnico de impresoras en oficina' },
+      { src: 'img/soc_dvr.png', alt: 'Soporte a estaciones y equipos de monitoreo' },
+      { src: 'img/rack_cableado.png', alt: 'Organización de equipos en rack' },
+    ],
+    guarantees: [
+      'Diagnóstico técnico con informe de hallazgos',
+      'Repuestos y consumibles de alta durabilidad',
+      'Tiempos de respuesta acordados por contrato',
+      'Configuración segura en red local (LAN)',
+    ],
   },
   redes: {
     title: 'Infraestructura de Redes',
-    description: 'GPON, P2P, LAN y WAN: conectividad diseñada e implementada con estándares profesionales.',
+    description: 'Conectividad diseñada con estándares internacionales y cableado certificado.',
+    context:
+      'Implementamos estándares internacionales (TIA/EIA), cableado certificado Cat6/Cat6A y fibra óptica GPON con pruebas de certificación en cada punto. Tu red escala sin cuellos de botella y con trazabilidad de cada enlace.',
+    services: [
+      { title: 'Redes GPON', text: 'Fibra óptica de alto rendimiento para conectividad estable.' },
+      { title: 'Enlaces P2P', text: 'Conexión dedicada o inalámbrica entre sedes.' },
+      { title: 'Redes LAN', text: 'Cableado estructurado, switches y segmentación.' },
+      { title: 'Redes WAN', text: 'VPN, enlaces de área amplia e interconexión multi-sede.' },
+    ],
+    gallery: [
+      { src: 'img/rack_cableado.png', alt: 'Rack con cableado estructurado certificado' },
+      { src: 'img/soc_dvr.png', alt: 'Centro de operaciones y red de monitoreo' },
+      { src: 'img/camaras_exterior.png', alt: 'Despliegue de infraestructura en exterior' },
+      { src: 'img/servicio-videovigilancia.png', alt: 'Integración de red con sistemas IP' },
+    ],
+    guarantees: [
+      'Certificación de puntos y pruebas Fluke',
+      'Materiales de alta resistencia y categoría certificada',
+      'Documentación de red (as-built) entregada al cliente',
+      'Diseño escalable GPON, LAN y WAN',
+    ],
   },
   electricas: {
     title: 'Instalaciones Eléctricas',
-    description: 'Proyectos eléctricos residenciales, empresariales e industriales bajo normativa RETIE.',
+    description: 'Proyectos eléctricos con cumplimiento normativo RETIE y seguridad industrial.',
+    context:
+      'Diseñamos e instalamos sistemas eléctricos con canalización profesional, tableros normalizados y materiales de alta capacidad. Cada proyecto cumple RETIE y buenas prácticas de seguridad para entornos residenciales, comerciales e industriales.',
+    services: [
+      {
+        title: 'Proyectos residenciales',
+        text: 'Tableros, tomas, iluminación y puesta a tierra en viviendas y conjuntos.',
+      },
+      {
+        title: 'Proyectos empresariales',
+        text: 'Cuadros eléctricos, potencia, iluminación LED y ampliaciones comerciales.',
+      },
+      {
+        title: 'Proyectos industriales',
+        text: 'Media y baja tensión, tableros de control y mantenimiento en planta.',
+      },
+    ],
+    gallery: [
+      { src: 'img/rack_cableado.png', alt: 'Canalización y organización de cableado de potencia' },
+      { src: 'img/camaras_exterior.png', alt: 'Instalación eléctrica en entorno exterior' },
+      { src: 'img/soc_dvr.png', alt: 'Tablero y sala técnica empresarial' },
+      { src: 'img/mantenimiento_equipos_computo.png', alt: 'Mantenimiento eléctrico en sala de equipos' },
+    ],
+    guarantees: [
+      'Cumplimiento normativo RETIE',
+      'Materiales de alta resistencia y calibre certificado',
+      'Pruebas de continuidad y aislamiento documentadas',
+      'Proyectos alineados a estándares ISO de gestión',
+    ],
   },
 };
+
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function renderServiceDetailHtml(category) {
+  const meta = SERVICE_CATEGORIES[category];
+  if (!meta) return '';
+
+  const servicesGridClass =
+    meta.services.length >= 4 ? 'services-grid--4' : meta.services.length === 3 ? 'services-grid--3' : 'services-grid--2';
+
+  const servicesHtml = meta.services
+    .map(
+      (item) => `
+      <article class="service-card rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 sm:p-5" role="listitem">
+        <h4 class="text-sm font-bold text-white sm:text-base">${escapeHtml(item.title)}</h4>
+        <p class="mt-1.5 text-xs leading-relaxed text-zinc-400 sm:text-sm">${escapeHtml(item.text)}</p>
+      </article>`
+    )
+    .join('');
+
+  const galleryHtml = meta.gallery
+    .map(
+      (img) => `
+      <figure class="service-modal-gallery__item">
+        <img src="${escapeHtml(img.src)}" alt="${escapeHtml(img.alt)}" class="service-modal-gallery__img" loading="lazy" decoding="async" width="400" height="300">
+      </figure>`
+    )
+    .join('');
+
+  const guaranteesHtml = meta.guarantees
+    .map(
+      (item) => `
+      <li class="service-modal-guarantees__item">
+        ${SERVICE_CHECK_ICON}
+        <span>${escapeHtml(item)}</span>
+      </li>`
+    )
+    .join('');
+
+  return `
+    <p class="service-modal__context">${escapeHtml(meta.context)}</p>
+
+    <section class="service-modal__section" aria-labelledby="service-modal-services-heading">
+      <h3 id="service-modal-services-heading" class="service-modal__section-title">Servicios incluidos</h3>
+      <div class="services-grid ${servicesGridClass}" role="list">${servicesHtml}</div>
+    </section>
+
+    <section class="service-modal__section" aria-labelledby="service-modal-gallery-heading">
+      <h3 id="service-modal-gallery-heading" class="service-modal__section-title">Trabajos reales</h3>
+      <div class="service-modal-gallery">${galleryHtml}</div>
+    </section>
+
+    <section class="service-modal__section" aria-labelledby="service-modal-guarantees-heading">
+      <h3 id="service-modal-guarantees-heading" class="service-modal__section-title">Lo que garantizamos</h3>
+      <ul class="service-modal-guarantees" role="list">${guaranteesHtml}</ul>
+    </section>
+  `;
+}
 
 /* =============================================================================
    Modal categoría → detalle de servicios
@@ -112,11 +251,11 @@ function initServiceCategoryModal() {
   const modal = document.getElementById('service-modal');
   const titleEl = document.getElementById('service-modal-title');
   const descEl = document.getElementById('service-modal-desc');
-  const panels = modal?.querySelectorAll('[data-service-panel]');
+  const mountEl = document.getElementById('service-modal-mount');
   const triggers = document.querySelectorAll('[data-service-category]');
   const closeEls = modal?.querySelectorAll('[data-service-modal-close]');
 
-  if (!modal || !titleEl || !descEl || !panels?.length || !triggers.length) return;
+  if (!modal || !titleEl || !descEl || !mountEl || !triggers.length) return;
 
   let lastFocused = null;
 
@@ -126,12 +265,8 @@ function initServiceCategoryModal() {
 
     titleEl.textContent = meta.title;
     descEl.textContent = meta.description;
-
-    panels.forEach((panel) => {
-      const isActive = panel.dataset.servicePanel === category;
-      panel.hidden = !isActive;
-      panel.classList.toggle('is-active', isActive);
-    });
+    mountEl.innerHTML = renderServiceDetailHtml(category);
+    mountEl.classList.add('is-active');
   };
 
   const openModal = (category, trigger) => {
@@ -140,6 +275,7 @@ function initServiceCategoryModal() {
 
     lastFocused = trigger || document.activeElement;
     showPanel(category);
+    modal.querySelector('.service-modal__body')?.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
 
     modal.removeAttribute('hidden');
     modal.setAttribute('aria-hidden', 'false');
@@ -158,7 +294,7 @@ function initServiceCategoryModal() {
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('overflow-hidden');
-    panels.forEach((panel) => panel.classList.remove('is-active'));
+    mountEl.classList.remove('is-active');
 
     window.setTimeout(() => {
       if (!modal.classList.contains('is-open')) {
