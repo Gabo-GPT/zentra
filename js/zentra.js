@@ -347,6 +347,8 @@ function initContactForm() {
     }
 
     const message = `Hola, me interesa solicitar una cotización con ZENTRA.\n\nNombre: ${name}\nCorreo: ${email}\nDetalles: ${details}`;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'whatsapp_form_submit' });
     window.open(buildWhatsAppUrl(message), '_blank', 'noopener,noreferrer');
   });
 }
